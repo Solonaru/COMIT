@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.comit.entities.account.Account;
+import com.project.comit.entities.account.admin.Admin;
+import com.project.comit.entities.account.usr.Usr;
 import com.project.comit.entities.event.challenge.Challenge;
 import com.project.comit.enums.SolutionType;
 
@@ -37,12 +39,17 @@ public class Solution {
 		super();
 	}
 
-	public Solution(Long id, String content, Challenge challenge, Account account) {
+	public Solution(String content, Challenge challenge, Account account) {
 		super();
-		this.id = id;
 		this.content = content;
 		this.challenge = challenge;
 		this.account = account;
+
+		if (account instanceof Admin) {
+			this.solutionType = SolutionType.ALTERNATIVE;
+		} else if (account instanceof Usr) {
+			this.solutionType = SolutionType.PROPOSED;
+		}
 	}
 
 	/* ----- GETTERS & SETTERS ----- */
