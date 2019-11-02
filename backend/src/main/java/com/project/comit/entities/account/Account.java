@@ -1,5 +1,7 @@
 package com.project.comit.entities.account;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,12 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.comit.entities.account.login.Login;
 import com.project.comit.entities.account.personaldata.PersonalData;
+import com.project.comit.entities.event.challenge.solution.Solution;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -33,6 +37,10 @@ public abstract class Account {
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "personal_data")
 	private PersonalData personalData;
+
+	@JsonIgnoreProperties(value = "account")
+	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Solution> solutions;
 
 	/* ----- CONSTRUCTORS ----- */
 	protected Account() {
@@ -64,6 +72,14 @@ public abstract class Account {
 
 	public void setSurname(String surname) {
 		this.personalData.setSurname(surname);
+	}
+
+	public List<Solution> getSolutions() {
+		return solutions;
+	}
+
+	public void setSolutions(List<Solution> solutions) {
+		this.solutions = solutions;
 	}
 
 }
