@@ -14,6 +14,7 @@ import { InstructionsComponent } from 'src/views/event/instructions/instructions
 import { CodeComponent } from 'src/views/event/code/code.component';
 import { ResourcesComponent } from 'src/views/event/resources/resources.component';
 import { SolutionsComponent } from 'src/views/event/solutions/solutions.component';
+import { ContactComponent } from 'src/views/contact/contact.component';
 
 const routes: Routes = [
     {
@@ -78,6 +79,10 @@ const routes: Routes = [
                 pathMatch: 'full'
             }
         ]
+    },
+    {
+        path: 'contact',
+        component: ContactComponent
     },
     {
         path: '',
