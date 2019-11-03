@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './../components/navbar/navbar.component';
 import { SliderComponent } from './../components/slider/slider.component';
 import { HomeComponent } from './../views/home/home.component';
+import { AboutComponent } from './../views/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SliderComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
