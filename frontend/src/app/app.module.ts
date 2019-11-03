@@ -10,9 +10,9 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './../components/navbar/navbar.component';
 import { SliderComponent } from './../components/slider/slider.component';
 import { HomeComponent } from './../views/home/home.component';
+import { AboutComponent } from './../views/about/about.component';
 
 import { MobileMenuDirective } from './../shared/mobile-menu.directive';
-import { ContactComponent } from './src/components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { ContactComponent } from './src/components/contact/contact.component';
     SliderComponent,
     HomeComponent,
     MobileMenuDirective,
-    ContactComponent
+    AboutComponent
   ],
   imports: [
     BrowserModule,

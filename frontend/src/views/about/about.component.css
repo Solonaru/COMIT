@@ -1,0 +1,12 @@
+.top-right {
+  position: absolute;
+  top: 35%;
+  right: 13%;
+  width: 30%;
+  font-size: 20px;
+  color: snow;
+}
+
+img {
+  width: 100%;
+}
