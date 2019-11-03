@@ -13,6 +13,7 @@ import com.project.comit.entities.account.Account;
 import com.project.comit.entities.account.IAccountService;
 import com.project.comit.entities.account.admin.Admin;
 import com.project.comit.entities.account.admin.IAdminService;
+import com.project.comit.entities.account.login.IRoleService;
 import com.project.comit.entities.account.usr.IUsrService;
 import com.project.comit.entities.account.usr.Usr;
 import com.project.comit.entities.event.Event;
@@ -23,6 +24,8 @@ import com.project.comit.entities.event.challenge.solution.ISolutionService;
 import com.project.comit.entities.event.challenge.solution.Solution;
 import com.project.comit.enums.EventType;
 import com.project.comit.enums.Technology;
+import com.project.comit.security.model.Role;
+import com.project.comit.security.model.RoleName;
 
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -36,6 +39,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	private IAdminService adminService;
 	@Autowired
 	private IUsrService usrService;
+	@Autowired
+	private IRoleService roleService;
 	@Autowired
 	private IEventService eventService;
 	@Autowired
@@ -53,6 +58,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		logger.printInfo("Starting data loading...");
 
 		this.createAndPersistAccounts();
+		this.createAndPersistRoles();
 		this.createAndPersistEventsAndChallenges();
 		this.createAndPersistSolutions();
 
@@ -60,15 +66,25 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	}
 
 	private void createAndPersistAccounts() {
-		Account usr1 = new Usr("Agape", "Solonaru", "Agape", "08102004");
-		Account usr2 = new Usr("Lilian", "Solonaru", "Lilian", "12061998");
-		Account usr3 = new Usr("Viorel", "Solonaru", "Viorel", "17041996");
-		Account usr4 = new Admin("Anastasia", "Solonaru", "Anastasia", "02022006");
+		Account usr1 = new Usr("Agape", "Solonaru", "Agape", "agape.solonaru@gmail.com", "08102004");
+		Account usr2 = new Usr("Lilian", "Solonaru", "Lilian", "lilian.solonaru@gmail.com", "12061998");
+		Account usr3 = new Usr("Viorel", "Solonaru", "Viorel", "viorel.solonaru@gmail.com", "17041996");
+		Account usr4 = new Admin("Anastasia", "Solonaru", "Anastasia", "anastasia.solonaru@gmail.com", "02022006");
 
 		this.accountService.insert(usr1);
 		this.accountService.insert(usr2);
 		this.accountService.insert(usr3);
 		this.accountService.insert(usr4);
+	}
+
+	private void createAndPersistRoles() {
+		Role role1 = new Role(RoleName.ROLE_ADMIN);
+		Role role2 = new Role(RoleName.ROLE_PM);
+		Role role3 = new Role(RoleName.ROLE_USER);
+
+		this.roleService.insert(role1);
+		this.roleService.insert(role2);
+		this.roleService.insert(role3);
 	}
 
 	private void createAndPersistEventsAndChallenges() {

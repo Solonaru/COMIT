@@ -1,0 +1,45 @@
+package com.project.comit.security.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.NaturalId;
+
+@Entity
+public class Role {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Enumerated(EnumType.STRING)
+	@NaturalId
+	@Column(length = 60)
+	private RoleName name;
+
+	/* ----- CONSTRUCTORS ----- */
+	public Role() {
+	}
+
+	public Role(RoleName name) {
+		this.name = name;
+	}
+
+	/* ----- GETTERS & SETTERS ----- */
+	public Long getId() {
+		return id;
+	}
+
+	public RoleName getName() {
+		return name;
+	}
+
+	public void setName(RoleName name) {
+		this.name = name;
+	}
+
+}

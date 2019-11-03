@@ -16,9 +16,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.project.comit.entities.account.login.Login;
 import com.project.comit.entities.account.personaldata.PersonalData;
 import com.project.comit.entities.event.challenge.solution.Solution;
+import com.project.comit.security.model.Login;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -47,9 +47,9 @@ public abstract class Account {
 		super();
 	}
 
-	protected Account(String name, String surname, String username, String password) {
+	protected Account(String name, String surname, String username, String email, String password) {
 		super();
-		this.login = new Login(username, password, this);
+		this.login = new Login(name, username, email, password, this);
 		this.personalData = new PersonalData(name, surname);
 	}
 
