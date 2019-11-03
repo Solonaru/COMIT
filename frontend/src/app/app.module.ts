@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
-import { appRoutes } from './router';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { DEFAULT_SWIPER_CONFIG } from './swiper'
@@ -13,27 +11,45 @@ import { HomeComponent } from './../views/home/home.component';
 import { AboutComponent } from './../views/about/about.component';
 
 import { MobileMenuDirective } from './../shared/mobile-menu.directive';
+import { LoginComponent } from './components/login/login.component';
+import { UserComponent } from './components/roles/user/user.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AltHomeComponent } from './components/alt-home/alt-home.component';
+import { AdminComponent } from './components/roles/admin/admin.component';
+import { PmComponent } from './components/roles/pm/pm.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing-module';
+import { httpInterceptorProviders } from './components/auth/auth-interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SliderComponent,
-    HomeComponent,
     MobileMenuDirective,
-    AboutComponent
+    AboutComponent,
+
+    LoginComponent,
+    UserComponent,
+    RegisterComponent,
+    HomeComponent,
+    AltHomeComponent,
+    AdminComponent,
+    PmComponent
   ],
   imports: [
     BrowserModule,
-    SwiperModule,
-    RouterModule.forRoot(
-      appRoutes
-    )
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    SwiperModule
   ],
   providers: [{
     provide: SWIPER_CONFIG,
     useValue: DEFAULT_SWIPER_CONFIG
-  }],
+  },
+    httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

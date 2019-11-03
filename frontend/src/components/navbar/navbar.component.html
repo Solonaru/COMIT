@@ -7,7 +7,10 @@
           <a routerLink="/" class="menu__link">Home</a>
         </li>
         <li class="menu__item">
-          <a routerLink="/about" class="menu__link">About Us</a>
+            <a href="#" class="menu__link" routerLink="/althome">Alt-Home</a>
+        </li>
+        <li class="menu__item">
+          <a class="menu__link" routerLink="/about">About Us</a>
         </li>
         <li class="menu__item">
           <a href="#" class="menu__link">Contact Us</a>
@@ -30,10 +33,10 @@
     </ul>
     <ul class="user">
         <li class="user__item">
-            <a href="#" class="user__link">Log In</a>
+            <a href="#" class="user__link" routerLink="/auth/login">Log In</a>
         </li>
         <li class="user__item">
-            <a href="#" class="user__link">Sign Up</a>
+            <a href="#" class="user__link" routerLink="/signup">Sign Up</a>
         </li>
     </ul>
     <div class="burger" appMenuOpen>
