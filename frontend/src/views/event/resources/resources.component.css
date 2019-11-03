@@ -1,0 +1,19 @@
+.resource:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.resource__title {
+    font-size: 23px;
+    margin-bottom: 5px;
+}
+
+.resource__link, .resource__link:link, .resource__link:active {
+    color: #236adb;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.resource__link:hover, .resource__link:focus {
+    color: #0d3980;
+    text-decoration: none;
+}

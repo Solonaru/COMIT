@@ -1,7 +1,4 @@
 /* Desktop menu */
-i {
-    color: #0d3980;
-}
 .header {
     display: flex;
     padding: 20px 50px;
@@ -57,7 +54,32 @@ i {
     color: #0d3980;
 }
 
-.menu__link:hover, .menu__link:focus, .menu-sub__link:hover, .menu-sub__link:focus {
+.menu__link:hover, .menu__link:focus, .menu-sub__link:hover, .menu-sub__link:focus, .user__link:hover, .user__link:focus {
+    color: #236adb;
+}
+
+.menu__link {
+    position: relative;
+}
+
+.menu__link:hover::before, .menu__link--active::before {
+    transform: scale(1) !important;
+}
+
+.menu__link::before {
+    content: '';
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    background-color: #236adb;
+    transform: scale(0);
+    transform-origin: top left;
+    transition: transform 250ms ease-in-out;
+}
+
+.menu__link--active {
     color: #236adb;
 }
 

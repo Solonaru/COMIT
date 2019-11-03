@@ -1,0 +1,11 @@
+.code__textarea {
+    width: 100%;
+    border: 1px solid #0d3980;
+    border-radius: 5px;
+    padding: 15px;
+    color: #0d3980;
+}
+
+.code__button-container {
+    text-align: right;
+}

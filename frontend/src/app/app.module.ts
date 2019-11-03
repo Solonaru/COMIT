@@ -9,6 +9,12 @@ import { NavbarComponent } from './../components/navbar/navbar.component';
 import { SliderComponent } from './../components/slider/slider.component';
 import { HomeComponent } from './../views/home/home.component';
 import { AboutComponent } from './../views/about/about.component';
+import { EventsComponent } from './../views/events/events.component';
+import { EventComponent } from '../views/event/event.component';
+import { InstructionsComponent } from '../views/event/instructions/instructions.component';
+import { CodeComponent } from '../views/event/code/code.component';
+import { ResourcesComponent } from '../views/event/resources/resources.component';
+import { SolutionsComponent } from '../views/event/solutions/solutions.component';
 
 import { MobileMenuDirective } from './../shared/mobile-menu.directive';
 import { LoginComponent } from './components/login/login.component';
@@ -29,6 +35,11 @@ import { httpInterceptorProviders } from './components/auth/auth-interceptor';
     SliderComponent,
     MobileMenuDirective,
     AboutComponent,
+    EventsComponent,
+    EventComponent,
+    CodeComponent,
+    ResourcesComponent,
+    SolutionsComponent,
 
     LoginComponent,
     UserComponent,
@@ -36,7 +47,8 @@ import { httpInterceptorProviders } from './components/auth/auth-interceptor';
     HomeComponent,
     AltHomeComponent,
     AdminComponent,
-    PmComponent
+    PmComponent,
+    InstructionsComponent
   ],
   imports: [
     BrowserModule,
