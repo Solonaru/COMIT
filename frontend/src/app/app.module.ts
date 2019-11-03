@@ -5,12 +5,13 @@ import { appRoutes } from './router';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { DEFAULT_SWIPER_CONFIG } from './swiper'
-
+import { FormsModule,  ReactiveFormsModule  }  from  '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './../components/navbar/navbar.component';
 import { SliderComponent } from './../components/slider/slider.component';
 import { HomeComponent } from './../views/home/home.component';
 import { AboutComponent } from './../views/about/about.component';
+import { ContactComponent } from '../views/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +19,13 @@ import { AboutComponent } from './../views/about/about.component';
     NavbarComponent,
     SliderComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     SwiperModule,
     RouterModule.forRoot(
       appRoutes

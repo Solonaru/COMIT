@@ -1,0 +1,25 @@
+label {
+  margin-top: 10px;
+  width: 160px;
+  text-align: left;
+  font-size: large;
+}
+
+.input {
+  margin-top: 10px;
+  width: 300px;
+  font-size: large;
+  text-align: left;
+}
+
+textarea {
+  margin-top: 10px;
+  width: 300px;
+  height: 200px;
+  font-size: large;
+  text-align: left;
+}
+
+.btn-primary {
+  width: 200px;
+}

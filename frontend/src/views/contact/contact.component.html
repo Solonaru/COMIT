@@ -1,0 +1,51 @@
+<div class="section-title text-center p-5">
+  <h2>
+    Got a question? We'd love to hear from you.
+  </h2>
+  <h2>
+    Send us a message and we'll respond as soon as possible
+  </h2>
+</div>
+<div class="form-container text-center">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <label for="fullName">
+      Name*
+    </label>
+    <input
+      class="input"
+      type="text"
+      name="fullName"
+      placeholder="Your full name"
+      formControlName="fullName"
+      required
+    />
+    <br />
+    <label for="email">
+      Email Address*
+    </label>
+    <input
+      class="input"
+      type="email"
+      name="email"
+      placeholder="Your email"
+      formControlName="email"
+      required
+    />
+    <br />
+    <label for="message">
+      Message*
+    </label>
+    <textarea
+      name="message"
+      placeholder="Your message"
+      formControlName="message"
+      required
+    ></textarea>
+    <br />
+    <input 
+      class="btn btn-primary mt-4"
+      type="submit" 
+      value="Send Message" 
+    />
+  </form>
+</div>
