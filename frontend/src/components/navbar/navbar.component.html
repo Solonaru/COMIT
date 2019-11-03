@@ -4,10 +4,10 @@
     </div>
     <ul class="menu">
         <li class="menu__item">
-          <a href="#" class="menu__link">Home</a>
+          <a routerLink="/" class="menu__link">Home</a>
         </li>
         <li class="menu__item">
-          <a href="about" class="menu__link">About Us</a>
+          <a routerLink="/about" class="menu__link">About Us</a>
         </li>
         <li class="menu__item">
           <a href="contact" class="menu__link">Contact Us</a>
@@ -34,6 +34,49 @@
         </li>
         <li class="user__item">
             <a href="#" class="user__link">Sign Up</a>
+        </li>
+    </ul>
+    <div class="burger" appMenuOpen>
+        <span class="burger__bar"></span>
+        <span class="burger__bar burger__bar--second"></span>
+        <span class="burger__bar"></span>
+    </div>
+</header>
+<!-- <div class="overlay"></div> -->
+<header class="header header--mobile" appMenuOpen>
+    <div class="logo logo--mobile">
+        <img src="./../../assets/images/ComIT-logo-g.png" alt="logo" class="logo__image logo__image--mobile">
+    </div>    
+    <ul class="menu menu--mobile">
+        <li class="menu__item menu__item--mobile">
+            <i class="fa fa-home icon--mobile" aria-hidden="true"></i>
+            <a href="#" class="menu__link menu__link--mobile">Home</a>
+        </li>
+        <li class="menu__item menu__item--mobile">
+            <i class="fa fa-calendar icon--mobile" aria-hidden="true"></i>
+            <a href="#" class="menu__link menu__link--mobile">Events</a>
+            <i class="fa fa-caret-down menu__icon" aria-hidden="true"></i>
+            <ul class="menu-sub menu-sub--mobile">
+                <li class="menu-sub__item menu-sub__item--mobile">
+                    <a href="#" class="menu-sub__link menu-sub__link--mobile">IT Competition</a>
+                </li>
+                <li class="menu-sub__item menu-sub__item--mobile">
+                    <a href="#" class="menu-sub__link menu-sub__link--mobile">Hackaton</a>
+                </li>
+                <li class="menu-sub__item menu-sub__item--mobile">
+                    <a href="#" class="menu-sub__link menu-sub__link--mobile">Web Challenge</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="user user--mobile">
+        <li class="user__item user__item--mobile">
+            <i class="fa fa-user icon--mobile" aria-hidden="true"></i>
+            <a href="#" class="user__link user__link--mobile">Sign In</a>
+        </li>
+        <li class="user__item user__item--mobile">
+            <i class="fa fa-user-plus icon--mobile" aria-hidden="true"></i>
+            <a href="#" class="user__link user__link--mobile">Register</a>
         </li>
     </ul>
 </header>

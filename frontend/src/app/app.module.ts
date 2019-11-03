@@ -13,6 +13,8 @@ import { HomeComponent } from './../views/home/home.component';
 import { AboutComponent } from './../views/about/about.component';
 import { ContactComponent } from '../views/contact/contact.component';
 
+import { MobileMenuDirective } from './../shared/mobile-menu.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,9 @@ import { ContactComponent } from '../views/contact/contact.component';
     SliderComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    MobileMenuDirective,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
