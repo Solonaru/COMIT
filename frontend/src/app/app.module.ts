@@ -1,63 +1,68 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { SwiperModule } from 'ngx-swiper-wrapper';
-import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
-import { DEFAULT_SWIPER_CONFIG } from './swiper'
-import { FormsModule,  ReactiveFormsModule  }  from  '@angular/forms';
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './../components/navbar/navbar.component';
-import { SliderComponent } from './../components/slider/slider.component';
-import { HomeComponent } from './../views/home/home.component';
-import { AboutComponent } from './../views/about/about.component';
-import { EventsComponent } from './../views/events/events.component';
-import { EventComponent } from '../views/event/event.component';
-import { InstructionsComponent } from '../views/event/instructions/instructions.component';
-import { CodeComponent } from '../views/event/code/code.component';
-import { ResourcesComponent } from '../views/event/resources/resources.component';
-import { SolutionsComponent } from '../views/event/solutions/solutions.component';
-import { ContactComponent } from '../views/contact/contact.component';
-
-import { MobileMenuDirective } from './../shared/mobile-menu.directive';
-import { LoginComponent } from './components/login/login.component';
-import { UserComponent } from './components/roles/user/user.component';
-import { RegisterComponent } from './components/register/register.component';
-import { AltHomeComponent } from './components/alt-home/alt-home.component';
-import { AdminComponent } from './components/roles/admin/admin.component';
-import { PmComponent } from './components/roles/pm/pm.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing-module';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { DEFAULT_SWIPER_CONFIG } from './swiper';
 import { httpInterceptorProviders } from './components/auth/auth-interceptor';
+
+import { AppComponent } from './app.component';
+import { HomeComponent } from './views/home/home.component';
+import { AltHomeComponent } from './views/alt-home/alt-home.component';
+import { AboutComponent } from './views/about/about.component';
+import { ContactComponent } from './views/contact/contact.component';
+
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SliderComponent } from './components/slider/slider.component';
+
+import { EventsComponent } from './views/events/events.component';
+import { EventComponent } from './views/event/event.component';
+import { InstructionsComponent } from './views/event/instructions/instructions.component';
+import { CodeComponent } from './views/event/code/code.component';
+import { ResourcesComponent } from './views/event/resources/resources.component';
+import { SolutionsComponent } from './views/event/solutions/solutions.component';
+
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
+import { UserComponent } from './components/roles/user/user.component';
+import { PmComponent } from './components/roles/pm/pm.component';
+import { AdminComponent } from './components/roles/admin/admin.component';
+
+import { MobileMenuDirective } from './../shared/mobile-menu.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    SliderComponent,
     HomeComponent,
+    AltHomeComponent,
     AboutComponent,
     ContactComponent,
-    MobileMenuDirective,
-    AboutComponent,
+
+    NavbarComponent,
+    SliderComponent,
+
     EventsComponent,
     EventComponent,
+    InstructionsComponent,
     CodeComponent,
     ResourcesComponent,
     SolutionsComponent,
 
     LoginComponent,
-    UserComponent,
     RegisterComponent,
-    HomeComponent,
-    AltHomeComponent,
-    AdminComponent,
+    UserComponent,
     PmComponent,
-    InstructionsComponent
+    AdminComponent,
+
+    MobileMenuDirective,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    SwiperModule,
     HttpClientModule,
     AppRoutingModule,
     SwiperModule

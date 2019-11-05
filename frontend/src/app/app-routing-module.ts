@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { HomeComponent } from './views/home/home.component';
+import { AltHomeComponent } from './views/alt-home/alt-home.component';
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
 import { UserComponent } from './components/roles/user/user.component';
 import { PmComponent } from './components/roles/pm/pm.component';
 import { AdminComponent } from './components/roles/admin/admin.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from 'src/views/home/home.component';
-import { AltHomeComponent } from './components/alt-home/alt-home.component';
-import { AboutComponent } from 'src/views/about/about.component';
-import { EventsComponent } from 'src/views/events/events.component';
-import { EventComponent } from 'src/views/event/event.component';
-import { InstructionsComponent } from 'src/views/event/instructions/instructions.component';
-import { CodeComponent } from 'src/views/event/code/code.component';
-import { ResourcesComponent } from 'src/views/event/resources/resources.component';
-import { SolutionsComponent } from 'src/views/event/solutions/solutions.component';
-import { ContactComponent } from 'src/views/contact/contact.component';
+import { AboutComponent } from './views/about/about.component';
+import { ContactComponent } from './views/contact/contact.component';
+import { EventsComponent } from './views/events/events.component';
+import { EventComponent } from './views/event/event.component';
+import { InstructionsComponent } from './views/event/instructions/instructions.component';
+import { CodeComponent } from './views/event/code/code.component';
+import { ResourcesComponent } from './views/event/resources/resources.component';
+import { SolutionsComponent } from './views/event/solutions/solutions.component';
+
+
 
 const routes: Routes = [
     {
@@ -24,6 +27,14 @@ const routes: Routes = [
     {
         path: 'althome',
         component: AltHomeComponent
+    },
+    {
+        path: 'auth/login',
+        component: LoginComponent
+    },
+    {
+        path: 'signup',
+        component: RegisterComponent
     },
     {
         path: 'user',
@@ -38,16 +49,12 @@ const routes: Routes = [
         component: AdminComponent
     },
     {
-        path: 'auth/login',
-        component: LoginComponent
-    },
-    {
-        path: 'signup',
-        component: RegisterComponent
-    },
-    {
         path: 'about',
         component: AboutComponent
+    },
+    {
+        path: 'contact',
+        component: ContactComponent
     },
     {
         path: 'events',
@@ -64,7 +71,7 @@ const routes: Routes = [
             {
                 path: 'code',
                 component: CodeComponent
-            }, 
+            },
             {
                 path: 'resources',
                 component: ResourcesComponent
@@ -79,10 +86,6 @@ const routes: Routes = [
                 pathMatch: 'full'
             }
         ]
-    },
-    {
-        path: 'contact',
-        component: ContactComponent
     },
     {
         path: '',

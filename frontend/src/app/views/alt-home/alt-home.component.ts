@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TokenStorageService } from '../auth/token-storage.service';
+import { TokenStorageService } from '../../components/auth/token-storage.service';
 
 @Component({
     selector: 'app-alt-home',

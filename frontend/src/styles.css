@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
 i {
     color: #0d3980;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
 }
 
 .general-button {
