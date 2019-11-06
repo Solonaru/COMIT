@@ -39,14 +39,14 @@
             <a href="#" class="user__link" routerLink="/signup">Sign Up</a>
         </li>
     </ul>
-    <div class="burger" appMenuOpen>
+    <div class="burger" (click)="toggleMenu()">
         <span class="burger__bar"></span>
         <span class="burger__bar burger__bar--second"></span>
         <span class="burger__bar"></span>
     </div>
 </header>
-<!-- <div class="overlay"></div> -->
-<header class="header header--mobile" appMenuOpen>
+<div class="overlay" [ngClass]="{'overlay--open' : open}" (click)="toggleMenu()"></div>
+<header class="header header--mobile" [ngClass]="{'header--active' : open}">
     <div class="logo logo--mobile">
         <img src="./../../assets/images/ComIT-logo-g.png" alt="logo" class="logo__image logo__image--mobile">
     </div>    

@@ -30,8 +30,6 @@ import { UserComponent } from './components/roles/user/user.component';
 import { PmComponent } from './components/roles/pm/pm.component';
 import { AdminComponent } from './components/roles/admin/admin.component';
 
-import { MobileMenuDirective } from './../shared/mobile-menu.directive';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,8 +53,6 @@ import { MobileMenuDirective } from './../shared/mobile-menu.directive';
     UserComponent,
     PmComponent,
     AdminComponent,
-
-    MobileMenuDirective,
 
   ],
   imports: [
