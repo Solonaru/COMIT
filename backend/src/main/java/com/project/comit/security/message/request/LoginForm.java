@@ -12,6 +12,7 @@ public class LoginForm {
 	@Size(min = 6, max = 40)
 	private String password;
 
+	/* ----- GETTERS & SETTERS ----- */
 	public String getUsername() {
 		return username;
 	}

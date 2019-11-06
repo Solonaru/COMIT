@@ -12,8 +12,8 @@ public class Admin extends Account {
 		super();
 	}
 
-	public Admin(String name, String surname, String username, String email, String password) {
-		super(name, surname, username, email, password);
+	public Admin(String name, String surname) {
+		super(name, surname);
 	}
 
 }

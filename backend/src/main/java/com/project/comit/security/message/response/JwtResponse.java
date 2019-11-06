@@ -10,12 +10,14 @@ public class JwtResponse {
 	private String username;
 	private Collection<? extends GrantedAuthority> authorities;
 
+	/* ----- CONSTRUCTORS ----- */
 	public JwtResponse(String accessToken, String username, Collection<? extends GrantedAuthority> authorities) {
 		this.token = accessToken;
 		this.username = username;
 		this.authorities = authorities;
 	}
 
+	/* ----- GETTERS & SETTERS ----- */
 	public String getAccessToken() {
 		return token;
 	}

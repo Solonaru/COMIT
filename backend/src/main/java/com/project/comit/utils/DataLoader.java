@@ -9,11 +9,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import com.project.comit.entities.account.Account;
-import com.project.comit.entities.account.IAccountService;
 import com.project.comit.entities.account.admin.Admin;
 import com.project.comit.entities.account.admin.IAdminService;
-import com.project.comit.entities.account.login.IRoleService;
 import com.project.comit.entities.account.usr.IUsrService;
 import com.project.comit.entities.account.usr.Usr;
 import com.project.comit.entities.event.Event;
@@ -24,6 +21,9 @@ import com.project.comit.entities.event.challenge.solution.ISolutionService;
 import com.project.comit.entities.event.challenge.solution.Solution;
 import com.project.comit.enums.EventType;
 import com.project.comit.enums.Technology;
+import com.project.comit.security.model.ILoginService;
+import com.project.comit.security.model.IRoleService;
+import com.project.comit.security.model.Login;
 import com.project.comit.security.model.Role;
 import com.project.comit.security.model.RoleName;
 
@@ -34,7 +34,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	private DataLogger logger;
 
 	@Autowired
-	private IAccountService accountService;
+	private ILoginService loginService;
 	@Autowired
 	private IAdminService adminService;
 	@Autowired
@@ -57,24 +57,12 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	private void loadData() {
 		logger.printInfo("Starting data loading...");
 
-		this.createAndPersistAccounts();
 		this.createAndPersistRoles();
+		this.createAndPersistAccounts();
 		this.createAndPersistEventsAndChallenges();
 		this.createAndPersistSolutions();
 
 		logger.printInfo("Data successfully loaded.");
-	}
-
-	private void createAndPersistAccounts() {
-		Account usr1 = new Usr("Agape", "Solonaru", "Agape", "agape.solonaru@gmail.com", "08102004");
-		Account usr2 = new Usr("Lilian", "Solonaru", "Lilian", "lilian.solonaru@gmail.com", "12061998");
-		Account usr3 = new Usr("Viorel", "Solonaru", "Viorel", "viorel.solonaru@gmail.com", "17041996");
-		Account usr4 = new Admin("Anastasia", "Solonaru", "Anastasia", "anastasia.solonaru@gmail.com", "02022006");
-
-		this.accountService.insert(usr1);
-		this.accountService.insert(usr2);
-		this.accountService.insert(usr3);
-		this.accountService.insert(usr4);
 	}
 
 	private void createAndPersistRoles() {
@@ -85,6 +73,36 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		this.roleService.insert(role1);
 		this.roleService.insert(role2);
 		this.roleService.insert(role3);
+	}
+
+	private void createAndPersistAccounts() {
+		Role userRole = roleService.findByName(RoleName.ROLE_USER)
+				.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+		Role adminRole = roleService.findByName(RoleName.ROLE_ADMIN)
+				.orElseThrow(() -> new RuntimeException("Fail! -> Cause: Admin Role not find."));
+
+		Login usr1 = new Login("Agape", "Solonaru", "Agape", "agape.solonaru@gmail.com",
+				"$2a$12$a/2HNAcTzG5HG/D40RitxOmUWdgzQ5FtgwOrhKDLB.2hutMo5T5N2");
+		usr1.addRole(userRole);
+
+		Login usr2 = new Login("Lilian", "Solonaru", "Lilian", "lilian.solonaru@gmail.com",
+				"$2a$12$S/qh3ASyIr9TTAxXDVg92.AaVjmuYJe1IajwIS1FBLdUromVUwceO");
+		usr2.addRole(userRole);
+
+		Login usr3 = new Login("Viorel", "Solonaru", "Viorel", "viorel.solonaru@gmail.com",
+				"$2a$12$r8zH66p/IXowTF9ijteW8e0ETJCn.QaAAruTunXFwMyVR2TTVwivu");
+		usr3.addRole(userRole);
+
+		/* TODO: Replace workaround with proper solution */
+		Login usr4 = new Login("Anastasia", "Solonaru", "Anastasia", "anastasia.solonaru@gmail.com",
+				"$2a$12$MglDew76JD1lpkyKspdk9e63LgseAE20tbez.qbmpKM0a8Jx6qPmy", "Admin");
+		usr4.addRole(userRole);
+		usr4.addRole(adminRole);
+
+		this.loginService.insert(usr1);
+		this.loginService.insert(usr2);
+		this.loginService.insert(usr3);
+		this.loginService.insert(usr4);
 	}
 
 	private void createAndPersistEventsAndChallenges() {

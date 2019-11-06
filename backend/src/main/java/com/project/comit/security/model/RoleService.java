@@ -1,4 +1,4 @@
-package com.project.comit.entities.account.login;
+package com.project.comit.security.model;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.comit.security.model.Role;
 import com.project.comit.security.repository.IRoleRepository;
 
 @Service
@@ -33,6 +32,10 @@ public class RoleService implements IRoleService {
 
 	public void deleteById(Long roleId) {
 		roleRepository.deleteById(roleId);
+	}
+
+	public Optional<Role> findByName(RoleName roleName) {
+		return this.roleRepository.findByName(roleName);
 	}
 
 }

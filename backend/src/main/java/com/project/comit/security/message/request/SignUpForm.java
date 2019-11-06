@@ -8,30 +8,43 @@ import javax.validation.constraints.Size;
 
 public class SignUpForm {
 	@NotBlank
-	@Size(min = 3, max = 50)
+	@Size(min = 3, max = 30)
 	private String name;
 
 	@NotBlank
-	@Size(min = 3, max = 50)
+	@Size(min = 3, max = 30)
+	private String surname;
+
+	@NotBlank
+	@Size(min = 3, max = 30)
 	private String username;
 
 	@NotBlank
-	@Size(max = 60)
+	@Size(max = 50)
 	@Email
 	private String email;
 
 	private Set<String> role;
 
 	@NotBlank
-	@Size(min = 6, max = 40)
+	@Size(min = 6, max = 50)
 	private String password;
 
+	/* ----- GETTERS & SETTERS ----- */
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	public String getUsername() {

@@ -12,8 +12,8 @@ public class Usr extends Account {
 		super();
 	}
 
-	public Usr(String name, String surname, String username, String email, String password) {
-		super(name, surname, username, email, password);
+	public Usr(String name, String surname) {
+		super(name, surname);
 	}
 
 }

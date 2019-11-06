@@ -3,6 +3,7 @@ package com.project.comit.security.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,8 +20,9 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.comit.entities.account.Account;
+import com.project.comit.entities.account.admin.Admin;
+import com.project.comit.entities.account.usr.Usr;
 
 @Entity
 public class Login {
@@ -30,16 +32,6 @@ public class Login {
 	@Column(name = "id")
 	private Long id;
 
-	@NotBlank
-	@Size(min = 3, max = 50)
-	@Column(name = "name")
-	private String name;
-
-	@NotBlank
-	@Size(min = 3, max = 50)
-	@Column(name = "username", nullable = false, unique = true)
-	private String username;
-
 	@NaturalId
 	@NotBlank
 	@Size(max = 50)
@@ -48,12 +40,16 @@ public class Login {
 	private String email;
 
 	@NotBlank
+	@Size(min = 3, max = 30)
+	@Column(name = "username", nullable = false, unique = true)
+	private String username;
+
+	@NotBlank
 	@Size(min = 6, max = 100)
 	@Column(name = "password", nullable = false)
 	private String password;
 
-	@JsonIgnoreProperties(value = "login")
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "account")
 	private Account account;
 
@@ -66,13 +62,21 @@ public class Login {
 		super();
 	}
 
-	public Login(String name, String username, String email, String password, Account account) {
+	public Login(String name, String surname, String username, String email, String password) {
 		super();
-		this.name = name;
-		this.username = username;
 		this.email = email;
+		this.username = username;
 		this.password = password;
-		this.account = account;
+		this.account = new Usr(name, surname);
+	}
+
+	/* FOR TESTING PURPOSES: Temporary constructor to persist administrators */
+	public Login(String name, String surname, String username, String email, String password, String adminWorkaround) {
+		super();
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.account = new Admin(name, surname);
 	}
 
 	/* ----- GETTERS & SETTERS ----- */
@@ -80,16 +84,20 @@ public class Login {
 		return id;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
 	public String getName() {
-		return name;
+		return this.account.getName();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.account.setName(name);
+	}
+
+	public String getSurname() {
+		return this.account.getSurname();
+	}
+
+	public void setSurname(String surname) {
+		this.account.setSurname(surname);
 	}
 
 	public String getEmail() {
@@ -98,6 +106,10 @@ public class Login {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getUsername() {
+		return username;
 	}
 
 	public String getPassword() {
@@ -118,6 +130,19 @@ public class Login {
 
 	public Account getAccount() {
 		return account;
+	}
+
+	/* ----- GETTERS & SETTERS ----- */
+	public void addRole(Role role) {
+		if (!this.roles.contains(role)) {
+			this.roles.add(role);
+		}
+	}
+
+	public void removeRole(Role role) {
+		if (this.roles.contains(role)) {
+			this.roles.remove(role);
+		}
 	}
 
 }

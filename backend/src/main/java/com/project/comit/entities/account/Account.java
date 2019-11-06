@@ -18,7 +18,6 @@ import javax.persistence.SequenceGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.comit.entities.account.personaldata.PersonalData;
 import com.project.comit.entities.event.challenge.solution.Solution;
-import com.project.comit.security.model.Login;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -29,10 +28,6 @@ public abstract class Account {
 	@SequenceGenerator(name = "usr_generator", sequenceName = "usr_sequence", initialValue = 1, allocationSize = 1)
 	@Column(name = "id", updatable = false, nullable = false)
 	protected Long id;
-
-	@JsonIgnoreProperties(value = "account")
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	private Login login;
 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "personal_data")
@@ -47,9 +42,8 @@ public abstract class Account {
 		super();
 	}
 
-	protected Account(String name, String surname, String username, String email, String password) {
+	protected Account(String name, String surname) {
 		super();
-		this.login = new Login(name, username, email, password, this);
 		this.personalData = new PersonalData(name, surname);
 	}
 

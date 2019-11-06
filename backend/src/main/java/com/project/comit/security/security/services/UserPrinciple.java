@@ -19,19 +19,22 @@ public class UserPrinciple implements UserDetails {
 
 	private String name;
 
-	private String username;
+	private String surname;
 
 	private String email;
+
+	private String username;
 
 	@JsonIgnore
 	private String password;
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserPrinciple(Long id, String name, String username, String email, String password,
+	public UserPrinciple(Long id, String name, String surname, String username, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.name = name;
+		this.surname = surname;
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -39,17 +42,11 @@ public class UserPrinciple implements UserDetails {
 	}
 
 	public static UserPrinciple build(Login user) {
-		List<GrantedAuthority> authorities = user.getRoles().stream().map(
-			role -> new SimpleGrantedAuthority(role.getName().name())
-		).collect(Collectors.toList());
+		List<GrantedAuthority> authorities = user.getRoles().stream()
+				.map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
 
-		return new UserPrinciple(
-				user.getId(),
-				user.getName(),
-				user.getUsername(),
-				user.getEmail(),
-				user.getPassword(),
-				authorities);
+		return new UserPrinciple(user.getId(), user.getName(), user.getSurname(), user.getUsername(), user.getEmail(),
+				user.getPassword(), authorities);
 	}
 
 	public Long getId() {
@@ -59,47 +56,43 @@ public class UserPrinciple implements UserDetails {
 	public String getName() {
 		return name;
 	}
+	
+	public String getSurname() {
+		return surname;
+	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	@Override
 	public String getUsername() {
 		return username;
 	}
 
-	@Override
 	public String getPassword() {
 		return password;
 	}
 
-	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
 	}
 
-	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
-	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
 
-	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
-	@Override
 	public boolean isEnabled() {
 		return true;
 	}
 
-	@Override
 	public boolean equals(Object o) {
 		if (this == o)
 			return true;
@@ -109,4 +102,5 @@ public class UserPrinciple implements UserDetails {
 		UserPrinciple user = (UserPrinciple) o;
 		return Objects.equals(id, user.id);
 	}
+
 }

@@ -1,8 +1,11 @@
-package com.project.comit.entities.account.login;
+package com.project.comit.security.model;
+
+import java.util.Optional;
 
 import com.project.comit.entities.IEntityService;
-import com.project.comit.security.model.Role;
 
 public interface IRoleService extends IEntityService<Role, Long> {
+
+	Optional<Role> findByName(RoleName roleName);
 
 }
