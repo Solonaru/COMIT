@@ -88,10 +88,14 @@ const routes: Routes = [
         ]
     },
     {
+      path: 'dashboard',
+      redirectTo: 'dashboard'
+    },
+    {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
-    }
+    },
 ];
 
 @NgModule({

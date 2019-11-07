@@ -29,6 +29,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { UserComponent } from './components/roles/user/user.component';
 import { PmComponent } from './components/roles/pm/pm.component';
 import { AdminComponent } from './components/roles/admin/admin.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AdminComponent } from './components/roles/admin/admin.component';
     UserComponent,
     PmComponent,
     AdminComponent,
+    DashboardComponent,
 
   ],
   imports: [
