@@ -16,6 +16,9 @@ import { InstructionsComponent } from './views/event/instructions/instructions.c
 import { CodeComponent } from './views/event/code/code.component';
 import { ResourcesComponent } from './views/event/resources/resources.component';
 import { SolutionsComponent } from './views/event/solutions/solutions.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { AccountManagerComponent } from './views/account-manager/account-manager.component';
+import { EventManagerComponent } from './views/event-manager/event-manager.component';
 
 
 
@@ -57,6 +60,19 @@ const routes: Routes = [
         component: ContactComponent
     },
     {
+      path: 'dashboard',
+      component: DashboardComponent,
+      /*canActivate: AdminGuard*/
+    },
+    {
+      path: 'account-manager',
+      component: AccountManagerComponent,
+    },
+    {
+      path: 'event-manager',
+      component: EventManagerComponent
+    },
+    {
         path: 'events',
         component: EventsComponent
     },
@@ -86,10 +102,6 @@ const routes: Routes = [
                 pathMatch: 'full'
             }
         ]
-    },
-    {
-      path: 'dashboard',
-      redirectTo: 'dashboard'
     },
     {
         path: '',
