@@ -9,44 +9,48 @@ const AUTHORITIES_KEY = 'AuthAuthorities';
 })
 export class TokenStorageService {
     private roles: Array<string> = [];
+
     constructor() { }
 
-    signOut() {
-        window.sessionStorage.clear();
+    clearTokenStorage() {
+        window.localStorage.removeItem(TOKEN_KEY);
+        window.localStorage.removeItem(USERNAME_KEY);
+        window.localStorage.removeItem(AUTHORITIES_KEY);
     }
 
     public saveToken(token: string) {
-        window.sessionStorage.removeItem(TOKEN_KEY);
-        window.sessionStorage.setItem(TOKEN_KEY, token);
+        window.localStorage.removeItem(TOKEN_KEY);
+        window.localStorage.setItem(TOKEN_KEY, token);
     }
 
     public getToken(): string {
-        return sessionStorage.getItem(TOKEN_KEY);
+        return window.localStorage.getItem(TOKEN_KEY);
     }
 
     public saveUsername(username: string) {
-        window.sessionStorage.removeItem(USERNAME_KEY);
-        window.sessionStorage.setItem(USERNAME_KEY, username);
+        window.localStorage.removeItem(USERNAME_KEY);
+        window.localStorage.setItem(USERNAME_KEY, username);
     }
 
     public getUsername(): string {
-        return sessionStorage.getItem(USERNAME_KEY);
+        return window.localStorage.getItem(USERNAME_KEY);
     }
 
     public saveAuthorities(authorities: string[]) {
-        window.sessionStorage.removeItem(AUTHORITIES_KEY);
-        window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
+        window.localStorage.removeItem(AUTHORITIES_KEY);
+        window.localStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
     }
 
     public getAuthorities(): string[] {
         this.roles = [];
 
-        if (sessionStorage.getItem(TOKEN_KEY)) {
-            JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(authority => {
+        if (window.localStorage.getItem(TOKEN_KEY)) {
+            JSON.parse(window.localStorage.getItem(AUTHORITIES_KEY)).forEach(authority => {
                 this.roles.push(authority.authority);
             });
         }
 
         return this.roles;
     }
+
 }

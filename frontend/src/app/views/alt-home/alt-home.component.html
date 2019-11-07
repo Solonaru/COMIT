@@ -1,11 +1,9 @@
 <h3>FOR TESTING PURPOSES</h3>
 
-<div *ngIf="info.token; else loggedOut">
+<div *ngIf="isAuthenticated; else loggedOut">
     <h5 class="text-primary">Your Information</h5>
     <p>
-        <strong>Username:</strong> {{info.username}}<br />
-        <strong>Roles:</strong> {{info.authorities}}<br />
-        <strong>Token:</strong> {{info.token}}.
+        <strong>Token:</strong> {{token}}
     </p>
     <button class="btn btn-secondary" (click)="logout()">Logout</button>
 </div>

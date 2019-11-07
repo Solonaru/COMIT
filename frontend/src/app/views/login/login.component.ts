@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthLoginInfo } from '../../components/auth/login-info';
 import { AuthService } from '../../components/auth/auth.service';
-import { TokenStorageService } from '../../components/auth/token-storage.service';
 
 @Component({
     selector: 'app-login',
@@ -11,23 +10,15 @@ import { TokenStorageService } from '../../components/auth/token-storage.service
 })
 export class LoginComponent {
 
-    isLoggedIn = false;
-    isLoginFailed = false;
-    errorMessage = '';
-    roles: string[] = [];
     private loginInfo: AuthLoginInfo;
+    isLoginFailed = false;
+    errorMessage: string = null;
 
     constructor(
-        private authService: AuthService,
-        private tokenStorage: TokenStorageService
-    ) {}
+        private authService: AuthService
+    ) { }
 
-    ngOnInit() {
-        if (this.tokenStorage.getToken()) {
-            this.isLoggedIn = true;
-            this.roles = this.tokenStorage.getAuthorities();
-        }
-    }
+    ngOnInit() { }
 
     onSubmit(form: NgForm) {
         if (!form.valid) {
@@ -37,18 +28,9 @@ export class LoginComponent {
         this.loginInfo = new AuthLoginInfo(form.value.username, form.value.password);
 
         this.authService.attemptAuth(this.loginInfo).subscribe(
-            data => {
-                this.tokenStorage.saveToken(data.accessToken);
-                this.tokenStorage.saveUsername(data.username);
-                this.tokenStorage.saveAuthorities(data.authorities);
-
-                this.isLoginFailed = false;
-                this.isLoggedIn = true;
-                this.roles = this.tokenStorage.getAuthorities();
-            },
+            data => { },
             error => {
-                console.log(error);
-                this.errorMessage = error.error.message;
+                this.errorMessage = error;
                 this.isLoginFailed = true;
             }
         );

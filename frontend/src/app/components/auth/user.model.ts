@@ -1,7 +1,7 @@
 export class User {
     constructor(
-        private username: string,
-        private authorities: string[],
-        private accessToken: string,
+        public username: string,
+        public authorities: string[],
+        public token: string,
     ) { };
 }

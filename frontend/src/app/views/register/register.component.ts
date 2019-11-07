@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../components/auth/auth.service';
-import { TokenStorageService } from '../../components/auth/token-storage.service';
 import { SignUpInfo } from '../../components/auth/signup-info';
 
 @Component({
@@ -12,23 +11,14 @@ import { SignUpInfo } from '../../components/auth/signup-info';
 export class RegisterComponent implements OnInit {
 
     signupInfo: SignUpInfo;
-    isLoggedIn = false;
-    isSignedUp = false;
     isSignUpFailed = false;
-    errorMessage = '';
-    roles: string[] = [];
+    errorMessage: string = null;
 
     constructor(
-        private authService: AuthService,
-        private tokenStorage: TokenStorageService
-    ) {}
+        private authService: AuthService
+    ) { }
 
-    ngOnInit() {
-        if (this.tokenStorage.getToken()) {
-            this.isLoggedIn = true;
-            this.roles = this.tokenStorage.getAuthorities();
-        }
-    }
+    ngOnInit() { }
 
     onSubmit(form: NgForm) {
         if (!form.valid) {
@@ -45,14 +35,9 @@ export class RegisterComponent implements OnInit {
         console.log(this.signupInfo);
 
         this.authService.signUp(this.signupInfo).subscribe(
-            data => {
-                console.log(data);
-                this.isSignedUp = true;
-                this.isSignUpFailed = false;
-            },
+            data => { },
             error => {
-                console.log(error);
-                this.errorMessage = error.error.message;
+                this.errorMessage = error;
                 this.isSignUpFailed = true;
             }
         );

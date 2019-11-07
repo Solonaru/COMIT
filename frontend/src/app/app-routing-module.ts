@@ -19,8 +19,7 @@ import { SolutionsComponent } from './views/event/solutions/solutions.component'
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { AccountManagerComponent } from './views/account-manager/account-manager.component';
 import { EventManagerComponent } from './views/event-manager/event-manager.component';
-
-
+import { AuthGuard } from './components/auth/auth.guard';
 
 const routes: Routes = [
     {
@@ -29,7 +28,8 @@ const routes: Routes = [
     },
     {
         path: 'althome',
-        component: AltHomeComponent
+        component: AltHomeComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'auth/login',
@@ -60,17 +60,17 @@ const routes: Routes = [
         component: ContactComponent
     },
     {
-      path: 'dashboard',
-      component: DashboardComponent,
-      /*canActivate: AdminGuard*/
+        path: 'dashboard',
+        component: DashboardComponent,
+        /* canActivate: AdminGuard */
     },
     {
-      path: 'account-manager',
-      component: AccountManagerComponent,
+        path: 'account-manager',
+        component: AccountManagerComponent,
     },
     {
-      path: 'event-manager',
-      component: EventManagerComponent
+        path: 'event-manager',
+        component: EventManagerComponent
     },
     {
         path: 'events',

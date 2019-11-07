@@ -1,27 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { TokenStorageService } from '../../components/auth/token-storage.service';
+import { AuthService } from 'src/app/components/auth/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-alt-home',
     templateUrl: './alt-home.component.html',
     styleUrls: ['./alt-home.component.css']
 })
-export class AltHomeComponent implements OnInit {
-    info: any;
+export class AltHomeComponent implements OnInit, OnDestroy {
+    private userSub: Subscription;
+    token: string;
+    isAuthenticated = false;
 
-    constructor(private token: TokenStorageService) { }
+    constructor(private authService: AuthService) { }
 
     ngOnInit() {
-        this.info = {
-            token: this.token.getToken(),
-            username: this.token.getUsername(),
-            authorities: this.token.getAuthorities()
-        };
+        this.userSub = this.authService.user.subscribe(user => {
+            if (user) {
+                this.isAuthenticated = true;
+                this.token = user.token;
+            }
+        });
     }
 
     logout() {
-        this.token.signOut();
-        window.location.reload();
+        this.authService.logout();
+    }
+
+    ngOnDestroy() {
+        this.userSub.unsubscribe();   
     }
 }

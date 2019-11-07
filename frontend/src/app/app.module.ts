@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing-module';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { DEFAULT_SWIPER_CONFIG } from './swiper';
-import { httpInterceptorProviders } from './components/auth/auth-interceptor';
+import { httpInterceptorProviders } from './components/auth/auth-interceptor.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
