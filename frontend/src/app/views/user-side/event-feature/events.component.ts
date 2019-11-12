@@ -14,6 +14,6 @@ export class EventsComponent implements OnInit {
   }
 
   goToPage () {
-    this.router.navigate(['/event', '1'])
+    this.router.navigate(['/challenges', '1'])
   }
 }

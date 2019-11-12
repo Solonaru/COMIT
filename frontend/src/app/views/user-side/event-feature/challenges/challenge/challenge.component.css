@@ -1,32 +1,32 @@
-.event-page {
+.challenge-page {
     padding: 40px;
     color: #0d3980;
 }
 
-.event-page__title {
+.challenge-page__title {
     text-align: center;
     margin-bottom: 60px;
 }
 
-.event-single, .tip {
+.challenge-single, .tip {
     border: 1px solid #0d3980;
     border-radius: 5px;
     padding: 20px;
     min-height: 500px;
 }
 
-.event-single {
+.challenge-single {
     position: relative;
     color: #0d3980;
 }
 
-.event-single__tabs {
+.challenge-single__tabs {
     position: absolute;
     top: -32px;
     left: 15px;
 }
 
-.event-single__tab, .event-single__tab:link, .event-single__tab:active {
+.challenge-single__tab, .challenge-single__tab:link, .challenge-single__tab:active {
     display: inline-block;
     color: #0d3980;
     border: 1px solid #0d3980;
@@ -36,12 +36,12 @@
     border-top-right-radius: 5px;
 }
 
-.event-single__tab:hover, .event-single__tab:focus {
+.challenge-single__tab:hover, .challenge-single__tab:focus {
     background-color: #fff;
     text-decoration: none;
 }
 
-.event-single__tab--active {
+.challenge-single__tab--active {
     background-color: #fff;
 }
 
