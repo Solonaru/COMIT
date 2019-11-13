@@ -10,12 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.comit.entities.event.challenge.Challenge;
-import com.project.comit.enums.EventType;
+import com.project.comit.entities.event.eventtype.EventType;
 
 @Entity
 public class Event {
@@ -27,6 +28,7 @@ public class Event {
 	private String name;
 	private LocalDate startDate;
 	private LocalDate endDate;
+	@ManyToOne
 	private EventType eventType;
 	@JsonIgnoreProperties(value = "event")
 	@OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)

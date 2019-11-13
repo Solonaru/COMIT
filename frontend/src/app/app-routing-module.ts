@@ -22,7 +22,6 @@ import { ResourcesComponent } from './views/user-side/event-feature/challenges/c
 import { SolutionsComponent } from './views/user-side/event-feature/challenges/challenge/solutions/solutions.component';
 import { EventsComponent } from './views/user-side/event-feature/events.component';
 
-
 const routes: Routes = [
     {
         path: 'home',

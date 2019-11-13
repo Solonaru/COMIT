@@ -6,9 +6,7 @@
                 <div class="sort__group">
                     <select name="eventType" id="eventType" class="sort__select">
                         <option value="-1" disabled selected>Event Type</option>
-                        <option value="">IT Competition</option>
-                        <option value="">Hackaton</option>
-                        <option value="">Web Challenge</option>
+                        <option value="" *ngFor="let eventType of eventTypes">{{ eventType }}</option>
                     </select>
                 </div>
                 <div class="sort__group">
@@ -22,17 +20,13 @@
                 <div class="sort__group">
                     <select name="technology" id="technology" class="sort__select">
                         <option value="-1" disabled selected>Technology</option>
-                        <option value="">Python</option>
-                        <option value="">Java</option>
-                        <option value="">JavaScript</option>
+                        <option value="" *ngFor="let technology of technologies">{{ technology }}</option>
                     </select>
                 </div>
                 <div class="sort__group">
                     <select name="level" id="level" class="sort__select">
                         <option value="-1" disabled selected>Level</option>
-                        <option value="">Junior</option>
-                        <option value="">Medior</option>
-                        <option value="">Senior</option>
+                        <option value="" *ngFor="let skillLevel of skillLevels">{{ skillLevel }}</option>
                     </select>
                 </div>
                 <div class="sort__button-container">

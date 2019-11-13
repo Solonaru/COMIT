@@ -8,18 +8,22 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.comit.entities.event.Event;
+import com.project.comit.entities.event.challenge.skilllevel.SkillLevel;
 import com.project.comit.entities.event.challenge.solution.Solution;
-import com.project.comit.enums.Technology;
+import com.project.comit.entities.event.challenge.technology.Technology;
 
 @Entity
 public class Challenge {
@@ -31,8 +35,11 @@ public class Challenge {
 	private String content;
 	@ElementCollection
 	private List<String> restrictions;
-	@ElementCollection
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "challenge_technology", joinColumns = @JoinColumn(name = "challenge_id"), inverseJoinColumns = @JoinColumn(name = "tehchnology_id"))
 	private List<Technology> technologies;
+	@ManyToOne
+	private SkillLevel skillLevel;
 	@JsonIgnoreProperties(value = "challenges")
 	@ManyToOne
 	@JoinColumn(name = "building", updatable = false, nullable = false)
@@ -49,11 +56,12 @@ public class Challenge {
 		this.solutions = new ArrayList<Solution>();
 	}
 
-	public Challenge(String content) {
+	public Challenge(String content, SkillLevel skillLevel) {
 		super();
 		this.content = content;
 		this.restrictions = new ArrayList<String>();
 		this.technologies = new ArrayList<Technology>();
+		this.skillLevel = skillLevel;
 		this.solutions = new ArrayList<Solution>();
 	}
 
@@ -84,6 +92,14 @@ public class Challenge {
 
 	public void setTechnologies(Technology... technologies) {
 		this.technologies = Arrays.asList(technologies);
+	}
+
+	public SkillLevel getSkillLevel() {
+		return skillLevel;
+	}
+
+	public void setSkillLevel(SkillLevel skillLevel) {
+		this.skillLevel = skillLevel;
 	}
 
 	public Event getEvent() {
