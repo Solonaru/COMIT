@@ -32,6 +32,7 @@ public class Challenge {
 	@SequenceGenerator(name = "challenge_generator", sequenceName = "challenge_sequence", initialValue = 1, allocationSize = 1)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
+	private String title;
 	private String content;
 	@ElementCollection
 	private List<String> restrictions;
@@ -47,6 +48,8 @@ public class Challenge {
 	@JsonIgnoreProperties(value = "challenge")
 	@OneToMany(mappedBy = "challenge", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Solution> solutions;
+	@ElementCollection
+	private List<String> tags;
 
 	/* ----- CONSTRUCTORS ----- */
 	public Challenge() {
@@ -54,20 +57,31 @@ public class Challenge {
 		this.restrictions = new ArrayList<String>();
 		this.technologies = new ArrayList<Technology>();
 		this.solutions = new ArrayList<Solution>();
+		this.tags = new ArrayList<String>();
 	}
 
-	public Challenge(String content, SkillLevel skillLevel) {
+	public Challenge(String title, String content, SkillLevel skillLevel) {
 		super();
+		this.title = title;
 		this.content = content;
 		this.restrictions = new ArrayList<String>();
 		this.technologies = new ArrayList<Technology>();
 		this.skillLevel = skillLevel;
 		this.solutions = new ArrayList<Solution>();
+		this.tags = new ArrayList<String>();
 	}
 
 	/* ----- GETTERS & SETTERS ----- */
 	public Long getId() {
 		return id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getContent() {
@@ -116,6 +130,14 @@ public class Challenge {
 
 	public void setSolutions(List<Solution> solutions) {
 		this.solutions = solutions;
+	}
+
+	public List<String> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<String> tags) {
+		this.tags = tags;
 	}
 
 }

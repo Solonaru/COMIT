@@ -1,0 +1,10 @@
+<div class="event" (click)="goToPage()">
+    <h1 class="event__title">{{ event.name }}</h1>
+    <div class="event__content">
+        {{ event.description }}
+    </div>
+    <div class="event__tags">
+        <i class="fa fa-tags event__icon" aria-hidden="true"></i>
+        <a href="#" class="event__tag" *ngFor="let tag of event.tags">{{ tag }}</a>
+    </div>
+</div>

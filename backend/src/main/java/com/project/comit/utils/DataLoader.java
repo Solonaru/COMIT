@@ -157,33 +157,55 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		List<Technology> technologies = this.technologyService.findAll();
 		List<SkillLevel> skillLevels = this.skillLevel.findAll();
 
-		Challenge challenge1 = new Challenge("Code 2 + 2", this.getRnFromList(skillLevels));
+		Challenge challenge1 = new Challenge("Addition", "Code 2 + 2", this.getRnFromList(skillLevels));
 		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
-		Challenge challenge2 = new Challenge("Code 2 - 2", this.getRnFromList(skillLevels));
+		Challenge challenge2 = new Challenge("Substraction", "Code 2 - 2", this.getRnFromList(skillLevels));
 		challenge1.setTechnologies(this.getRnFromList(technologies));
-		Challenge challenge3 = new Challenge("Code 2 * 2", this.getRnFromList(skillLevels));
+		Challenge challenge3 = new Challenge("Multiply", "Code 2 * 2", this.getRnFromList(skillLevels));
 		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
-		Challenge challenge4 = new Challenge("Code 2 / 2", this.getRnFromList(skillLevels));
+		Challenge challenge4 = new Challenge("Divide", "Code 2 / 2", this.getRnFromList(skillLevels));
 		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies));
-		Challenge challenge5 = new Challenge("Code a simple calculator", this.getRnFromList(skillLevels));
+		Challenge challenge5 = new Challenge("Simple calculator", "Code a simple calculator",
+				this.getRnFromList(skillLevels));
 		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies), this.getRnFromList(technologies));
-		Challenge challenge6 = new Challenge("Code a complex calculator", this.getRnFromList(skillLevels));
+		Challenge challenge6 = new Challenge("Complex calculator", "Code a complex calculator",
+				this.getRnFromList(skillLevels));
 		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
-		Challenge challenge7 = new Challenge("Code somehting", this.getRnFromList(skillLevels));
+		Challenge challenge7 = new Challenge("Simply code", "Code somehting", this.getRnFromList(skillLevels));
 		challenge1.setTechnologies(this.getRnFromList(technologies));
 
-		Event event1 = new Event("Event A", toDate("01-10-2019"), toDate("01-11-2019"), this.getRnFromList(eventTypes));
+		Event event1 = new Event("Event A",
+				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
+						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
+						+ "voluptatibus!",
+				toDate("01-10-2019"), toDate("01-11-2019"), this.getRnFromList(eventTypes));
+		event1.setTags("Programming", "Begginer", "Math");
 		event1.addChallenge(challenge1);
 		event1.addChallenge(challenge2);
-		Event event2 = new Event("Event B", toDate("15-10-2019"), toDate("01-11-2019"), this.getRnFromList(eventTypes));
+		Event event2 = new Event("Event B",
+				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
+						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
+						+ "voluptatibus!",
+				toDate("15-10-2019"), toDate("01-11-2019"), this.getRnFromList(eventTypes));
+		event2.setTags("Programming", "Intermediate", "Code");
 		event2.addChallenge(challenge3);
 		event2.addChallenge(challenge4);
 		event2.addChallenge(challenge5);
-		Event event3 = new Event("Event C", toDate("15-10-2019"), toDate("15-11-2019"), this.getRnFromList(eventTypes));
+		Event event3 = new Event("Event C",
+				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
+						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
+						+ "voluptatibus!",
+				toDate("15-10-2019"), toDate("15-11-2019"), this.getRnFromList(eventTypes));
+		event3.setTags("Programming", "Java", "Algorithms");
 		event3.addChallenge(challenge6);
-		Event event4 = new Event("Event D", toDate("01-10-2019"), toDate("01-11-2019"), this.getRnFromList(eventTypes));
+		Event event4 = new Event("Event D",
+				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
+						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
+						+ "voluptatibus!",
+				toDate("01-10-2019"), toDate("01-11-2019"), this.getRnFromList(eventTypes));
+		event4.setTags("Programming", "Begginer", "Math");
 		event4.addChallenge(challenge7);
 
 		this.eventService.insert(event1);

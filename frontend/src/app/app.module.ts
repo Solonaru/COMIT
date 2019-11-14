@@ -34,6 +34,8 @@ import { DashboardComponent } from './views/admin-side/dashboard/dashboard.compo
 import { AccountManagerComponent } from './views/admin-side/account-manager/account-manager.component';
 import { EventManagerComponent } from './views/admin-side/event-manager/event-manager.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { EventListComponent } from './views/user-side/event-feature/event-list/event-list.component';
+import { EventItemComponent } from './views/user-side/event-feature/event-list/event-item/event-item.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AccountManagerComponent,
     EventManagerComponent,
     FooterComponent,
+    EventListComponent,
+    EventItemComponent,
 
   ],
   imports: [

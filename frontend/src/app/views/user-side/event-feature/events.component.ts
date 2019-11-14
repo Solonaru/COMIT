@@ -11,9 +11,7 @@ export class EventsComponent implements OnInit {
   eventTypes: string[];
   technologies: string[];
 
-  constructor(
-    private router: Router,
-    private enumObjectService: EnumObjectService) { }
+  constructor(private enumObjectService: EnumObjectService) { }
 
   ngOnInit() {
     this.enumObjectService.getEventTypes().subscribe(data => {
@@ -23,10 +21,6 @@ export class EventsComponent implements OnInit {
     this.enumObjectService.getTechnologies().subscribe(data => {
       this.technologies = data;
     });
-  }
-
-  goToPage() {
-    this.router.navigate(['/challenges', '1'])
   }
 
 }

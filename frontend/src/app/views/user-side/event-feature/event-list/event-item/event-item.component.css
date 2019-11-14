@@ -1,0 +1,41 @@
+.event {
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* TODO: @Andrew any clue on how to fix it */
+/* .event:not(:last-child) {
+    margin-bottom: 20px;
+} */
+
+.event:hover {
+    box-shadow: -1px 0px 9px 3px rgba(0, 0, 0, 0.46);
+    cursor: pointer;
+}
+
+.event__icon {
+    margin-right: 10px;
+}
+
+.event__tags {
+    margin-top: 15px;
+}
+
+.event__tag, .event__tag:link, .event__tag:active {
+    border: 1px solid #0d3980;
+    color: #0d3980;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 5px;
+    transition: transform 250ms ease-in-out;
+    box-shadow: -1px 9px 9px -10px rgba(0, 0, 0, 0.46);
+}
+
+.event__tag:hover, .event__tag:focus {
+    text-decoration: none;
+    transform: scale(.95);
+}
+
+.event__tag:not(:last-child) {
+    margin-right: 15px;
+}

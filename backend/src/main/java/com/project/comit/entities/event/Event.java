@@ -2,10 +2,12 @@ package com.project.comit.entities.event;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,7 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.comit.entities.event.challenge.Challenge;
+import com.project.comit.entities.event.challenge.technology.Technology;
 import com.project.comit.entities.event.eventtype.EventType;
 
 @Entity
@@ -26,6 +29,7 @@ public class Event {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 	private String name;
+	private String description;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	@ManyToOne
@@ -33,20 +37,25 @@ public class Event {
 	@JsonIgnoreProperties(value = "event")
 	@OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Challenge> challenges;
+	@ElementCollection
+	private List<String> tags;
 
 	/* ----- CONSTRUCTORS ----- */
 	public Event() {
 		super();
 		this.challenges = new ArrayList<Challenge>();
+		this.tags = new ArrayList<String>();
 	}
 
-	public Event(String name, LocalDate startDate, LocalDate endDate, EventType eventType) {
+	public Event(String name, String description, LocalDate startDate, LocalDate endDate, EventType eventType) {
 		super();
 		this.name = name;
+		this.description = description;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.eventType = eventType;
 		this.challenges = new ArrayList<Challenge>();
+		this.tags = new ArrayList<String>();
 	}
 
 	/* ----- GETTERS & SETTERS ----- */
@@ -60,6 +69,14 @@ public class Event {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public LocalDate getStartDate() {
@@ -92,6 +109,14 @@ public class Event {
 
 	public void setChallenges(List<Challenge> challenges) {
 		this.challenges = challenges;
+	}
+
+	public List<String> getTags() {
+		return tags;
+	}
+	
+	public void setTags(String... tags) {
+		this.tags = Arrays.asList(tags);
 	}
 
 	/* ----- METHODS ----- */
