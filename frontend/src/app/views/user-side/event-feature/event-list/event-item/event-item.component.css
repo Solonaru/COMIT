@@ -4,9 +4,9 @@
 }
 
 /* TODO: @Andrew any clue on how to fix it */
-/* .event:not(:last-child) {
-    margin-bottom: 20px;
-} */
+.event {
+    margin: 10px 0;
+}
 
 .event:hover {
     box-shadow: -1px 0px 9px 3px rgba(0, 0, 0, 0.46);
@@ -38,4 +38,23 @@
 
 .event__tag:not(:last-child) {
     margin-right: 15px;
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+    .event {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .event {
+        padding: 10px;
+    }
+    .event {
+        left: 0;
+    }
+    .event__tab, .event__tab:link, .event__tab:active {
+        padding: 3px 5px;
+    }
 }

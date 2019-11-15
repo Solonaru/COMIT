@@ -79,3 +79,10 @@
 .challenge__tag:not(:last-child) {
     margin-right: 15px;
 }
+
+/* Responsive */
+@media (max-width: 767.98px) {
+    .sort {
+        margin-bottom: 30px;
+    }
+}

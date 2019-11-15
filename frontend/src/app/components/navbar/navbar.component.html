@@ -59,11 +59,11 @@
     <ul class="menu menu--mobile">
         <li class="menu__item menu__item--mobile">
             <i class="fa fa-home icon--mobile" aria-hidden="true"></i>
-            <a href="#" class="menu__link menu__link--mobile">Home</a>
+            <a routerLink="/home" class="menu__link menu__link--mobile">Home</a>
         </li>
         <li class="menu__item menu__item--mobile">
             <i class="fa fa-calendar icon--mobile" aria-hidden="true"></i>
-            <a href="#" class="menu__link menu__link--mobile">Events</a>
+            <a routerLink="/events" class="menu__link menu__link--mobile">Events</a>
             <i class="fa fa-caret-down menu__icon" aria-hidden="true"></i>
             <ul class="menu-sub menu-sub--mobile">
                 <li class="menu-sub__item menu-sub__item--mobile">
@@ -77,19 +77,27 @@
                 </li>
             </ul>
         </li>
+        <li class="menu__item menu__item--mobile">
+            <i class="fa fa-briefcase icon--mobile" aria-hidden="true"></i>
+            <a routerLink="/about-us" class="menu__link menu__link--mobile">About Us</a>
+        </li>
+        <li class="menu__item menu__item--mobile">
+            <i class="fa fa-address-book icon--mobile" aria-hidden="true"></i>
+            <a routerLink="/contact" class="menu__link menu__link--mobile">Contact</a>
+        </li>
     </ul>
     <ul class="user user--mobile">
-        <li class="user__item user__item--mobile">
+        <li class="user__item user__item--mobile" *ngIf="!isAuthenticated">
             <i class="fa fa-user icon--mobile" aria-hidden="true"></i>
-            <a href="#" class="user__link user__link--mobile">Sign In</a>
+            <a routerLink="/auth/login" class="user__link user__link--mobile">Sign In</a>
         </li>
-        <li class="user__item user__item--mobile">
+        <li class="user__item user__item--mobile" *ngIf="!isAuthenticated">
             <i class="fa fa-user-plus icon--mobile" aria-hidden="true"></i>
-            <a href="#" class="user__link user__link--mobile">Register</a>
+            <a  routerLink="/signup" class="user__link user__link--mobile">Register</a>
         </li>
-        <li class="user__item user__item--mobile">
+        <li class="user__item user__item--mobile" *ngIf="isAuthenticated">
             <i class="fa fa-user-plus icon--mobile" aria-hidden="true"></i>
-            <a href="#" class="user__link user__link--mobile">Logout</a>
+            <a (click)="onLogout()" class="user__link user__link--mobile">Logout</a>
         </li>
     </ul>
 </header>

@@ -216,7 +216,7 @@
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
+@media (max-width: 1199.98px) {
     .menu, .user {
         display: none;
     }
@@ -231,5 +231,9 @@
     }
     .logo {
         width: 100px;
+    }
+    .menu-sub--mobile {
+        left: 0;
+        top: 30px;
     }
 }
