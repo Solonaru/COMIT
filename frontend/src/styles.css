@@ -1,5 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
+app-root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
+}
+
 i {
     color: #0d3980;
 }
@@ -53,4 +63,79 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 15px;
     font-size: 25px;
     font-weight: 600;
+}
+
+/* Admin manager components */
+.manager__title {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.events-manager__btn-container {
+    margin-bottom: 15px;
+}
+
+.table__action, .table__action:link, .table__action:active {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.table__action--delete, .table__action--delete:link, .table__action--delete:active {
+    background: #dc3545;
+}
+
+.table__action--update, .table__action--update:link, .table__action--update:active {
+    background: #236adb;
+}
+
+.table__action--add, .table__action--add:link, .table__action--add:active {
+    background: #28a745;
+}
+
+.table__icon {
+    font-size: 17px;
+    color: #ffffff;
+}
+
+.manager-form {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.manager-form__select {
+    border-radius: 5px;
+    border: 1px solid #0d3980;
+    padding: 5px 10px;
+}
+
+/* Modal */
+.modal.show {
+    display:block;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.6)
+}
+
+.modal-form__input {
+    width: 100%;
+    color: #0d3980;
+    margin-bottom: 15px;
+    border: 1px solid;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+@media (min-width: 1199.98px) {
+    .modal-dialog {
+        max-width: 800px;
+    }
 }

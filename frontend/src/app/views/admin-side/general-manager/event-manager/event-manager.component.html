@@ -1,0 +1,84 @@
+<h2 class="manager__title">Events Manager</h2>
+<div class="events-manager__btn-container">
+    <a href="#" (click)="toggleModal($event, 'add')" class="table__action table__action--add"><i class="fa fa-plus-circle table__icon" aria-hidden="true"></i></a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>1</th>
+            <td>Event 1</td>
+            <td>01.01.2011</td>
+            <td>01.02.2011</td>
+            <td>
+                <a href="#" class="table__action table__action--update"><i class="fa fa-pencil-square-o table__icon" aria-hidden="true"></i></a>
+                <a href="#" (click)="toggleModal($event, 'delete')" class="table__action table__action--delete"><i class="fa fa-trash table__icon" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>Event 2</td>
+            <td>01.01.2011</td>
+            <td>01.02.2011</td>
+            <td>
+                <a href="#" class="table__action table__action--update"><i class="fa fa-pencil-square-o table__icon" aria-hidden="true"></i></a>
+                <a href="#" (click)="toggleModal($event, 'delete')" class="table__action table__action--delete"><i class="fa fa-trash table__icon" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>Event 3</td>
+            <td>01.01.2011</td>
+            <td>01.02.2011</td>
+            <td>
+                <a href="#" class="table__action table__action--update"><i class="fa fa-pencil-square-o table__icon" aria-hidden="true"></i></a>
+                <a href="#" (click)="toggleModal($event, 'delete')" class="table__action table__action--delete"><i class="fa fa-trash table__icon" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': modal}">
+    <div class="modal-overlay" (click)="toggleModal($event)"></div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="toggleModal($event)">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p *ngIf="selectedAction == 'delete'">Are you sure?</p>
+            <form action="" class="modal-form" *ngIf="selectedAction == 'add'">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="text" class="modal-form__input" placeholder="Name">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <input type="text" class="modal-form__input" placeholder="Start Date">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <input type="text" class="modal-form__input" placeholder="End Date">
+                    </div>
+                    <div class="col-12">
+                        <textarea name="" id="" cols="30" rows="10" class="modal-form__input" placeholder="Description"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="toggleModal($event)">Close</button>
+        </div>
+        </div>
+    </div>
+</div>

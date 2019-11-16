@@ -1,0 +1,36 @@
+.manager {
+    padding: 40px 20px;
+}
+
+.tabs {
+    padding: 10px 0;
+    margin: 0;
+    list-style: none;
+    border: 1px solid #0d3980;
+    border-radius: 5px;
+}
+
+.tab {
+    padding: 10px;
+}
+
+.tab__link, .tab__link:link, .tab__link:active {
+    color: inherit;
+    font-size: 18px;
+}
+
+.tab__link--active, .tab__link--active:link, .tab__link--active:active {
+    color: #236adb;
+}
+
+.tab__link:hover, .tab__link:focus {
+    text-decoration: none;
+    color: #236adb;
+}
+
+.manager__content {
+    border: 1px solid #0d3980;
+    border-radius: 5px;
+    padding: 20px;
+    overflow: auto;
+}

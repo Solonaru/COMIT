@@ -1,0 +1,16 @@
+<div class="manager">
+    <div class="row">
+        <div class="col-12 col-sm-3 col-md-2">
+            <ul class="tabs">
+                <li class="tab"><a routerLink="event-manager" routerLinkActive="tab__link--active" class="tab__link">Manage Events</a></li>
+                <li class="tab"><a routerLink="challenge-manager" routerLinkActive="tab__link--active" class="tab__link">Manage Challenges</a></li>
+                <li class="tab"><a routerLink="solution-manager" routerLinkActive="tab__link--active" class="tab__link">Manage Solutions</a></li>
+            </ul>
+        </div>
+        <div class="col-12 col-sm-9 col-md-10">
+            <div class="manager__content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

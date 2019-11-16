@@ -32,13 +32,18 @@ import { PmComponent } from './components/roles/pm/pm.component';
 import { AdminComponent } from './components/roles/admin/admin.component';
 import { DashboardComponent } from './views/admin-side/dashboard/dashboard.component';
 import { AccountManagerComponent } from './views/admin-side/account-manager/account-manager.component';
-import { EventManagerComponent } from './views/admin-side/event-manager/event-manager.component';
+import { GeneralManagerComponent } from './views/admin-side/general-manager/general-manager.component';
+import { EventManagerComponent } from './views/admin-side/general-manager/event-manager/event-manager.component';
+import { ChallengeManagerComponent } from './views/admin-side/general-manager/challenge-manager/challenge-manager.component';
+import { SolutionManagerComponent } from './views/admin-side/general-manager/solution-manager/solution-manager.component';
+
 import { FooterComponent } from './components/footer/footer.component';
 import { EventListComponent } from './views/user-side/event-feature/event-list/event-list.component';
 import { EventItemComponent } from './views/user-side/event-feature/event-list/event-item/event-item.component';
 import { FilterComponent } from './views/user-side/event-feature/filter/filter.component';
 import { FilterFieldComponent } from './views/user-side/event-feature/filter/filter-field/filter-field.component';
 import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -72,6 +77,9 @@ import { DatePipe } from '@angular/common';
     EventItemComponent,
     FilterComponent,
     FilterFieldComponent,
+    GeneralManagerComponent,
+    ChallengeManagerComponent,
+    SolutionManagerComponent,
 
   ],
   imports: [

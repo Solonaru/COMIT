@@ -16,6 +16,9 @@ export class DashboardComponent implements OnInit {
   goToEvents() {
     this.router.navigateByUrl('/event-manager');
   }
+  goToGeneralManager() {
+    this.router.navigate(['../general-manager']);
+  }
 
   ngOnInit() {
   }
