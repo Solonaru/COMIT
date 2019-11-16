@@ -2,7 +2,9 @@ package com.project.comit.entities.event.challenge;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,7 +40,7 @@ public class Challenge {
 	private List<String> restrictions;
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "challenge_technology", joinColumns = @JoinColumn(name = "challenge_id"), inverseJoinColumns = @JoinColumn(name = "tehchnology_id"))
-	private List<Technology> technologies;
+	private Set<Technology> technologies;
 	@ManyToOne
 	private SkillLevel skillLevel;
 	@JsonIgnoreProperties(value = "challenges")
@@ -49,15 +51,15 @@ public class Challenge {
 	@OneToMany(mappedBy = "challenge", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Solution> solutions;
 	@ElementCollection
-	private List<String> tags;
+	private Set<String> tags;
 
 	/* ----- CONSTRUCTORS ----- */
 	public Challenge() {
 		super();
 		this.restrictions = new ArrayList<String>();
-		this.technologies = new ArrayList<Technology>();
+		this.technologies = new HashSet<Technology>();
 		this.solutions = new ArrayList<Solution>();
-		this.tags = new ArrayList<String>();
+		this.tags = new HashSet<String>();
 	}
 
 	public Challenge(String title, String content, SkillLevel skillLevel) {
@@ -65,10 +67,10 @@ public class Challenge {
 		this.title = title;
 		this.content = content;
 		this.restrictions = new ArrayList<String>();
-		this.technologies = new ArrayList<Technology>();
+		this.technologies = new HashSet<Technology>();
 		this.skillLevel = skillLevel;
 		this.solutions = new ArrayList<Solution>();
-		this.tags = new ArrayList<String>();
+		this.tags = new HashSet<String>();
 	}
 
 	/* ----- GETTERS & SETTERS ----- */
@@ -100,12 +102,12 @@ public class Challenge {
 		this.restrictions = restrictions;
 	}
 
-	public List<Technology> getTechnologies() {
+	public Set<Technology> getTechnologies() {
 		return technologies;
 	}
 
 	public void setTechnologies(Technology... technologies) {
-		this.technologies = Arrays.asList(technologies);
+		this.technologies = new HashSet<Technology>(Arrays.asList(technologies));
 	}
 
 	public SkillLevel getSkillLevel() {
@@ -132,12 +134,12 @@ public class Challenge {
 		this.solutions = solutions;
 	}
 
-	public List<String> getTags() {
+	public Set<String> getTags() {
 		return tags;
 	}
 
-	public void setTags(List<String> tags) {
-		this.tags = tags;
+	public void setTags(String... tags) {
+		this.tags = new HashSet<String>(Arrays.asList(tags));
 	}
 
 }

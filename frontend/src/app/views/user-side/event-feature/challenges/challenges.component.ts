@@ -8,29 +8,12 @@ import { EnumObjectService } from 'src/app/services/enum-object.service';
   styleUrls: ['./challenges.component.css']
 })
 export class ChallengesComponent implements OnInit {
-  eventTypes: string[];
-  technologies: string[];
-  skillLevels: string[];
 
-  constructor(
-    private router: Router,
-    private enumObjectService: EnumObjectService) { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
-    this.enumObjectService.getEventTypes().subscribe(data => {
-      this.eventTypes = data;
-    });
+  ngOnInit() { }
 
-    this.enumObjectService.getTechnologies().subscribe(data => {
-      this.technologies = data;
-    });
-
-    this.enumObjectService.getSkillLevels().subscribe(data => {
-      this.skillLevels = data;
-    })
-  }
-
-  goToPage () {
+  goToPage() {
     this.router.navigate(['/challenge', '1'])
   }
 }

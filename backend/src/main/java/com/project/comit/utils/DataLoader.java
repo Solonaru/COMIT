@@ -24,6 +24,8 @@ import com.project.comit.entities.event.challenge.solution.ISolutionService;
 import com.project.comit.entities.event.challenge.solution.Solution;
 import com.project.comit.entities.event.challenge.technology.ITechnologyService;
 import com.project.comit.entities.event.challenge.technology.Technology;
+import com.project.comit.entities.event.eventstatus.EventStatus;
+import com.project.comit.entities.event.eventstatus.IEventStatusService;
 import com.project.comit.entities.event.eventtype.EventType;
 import com.project.comit.entities.event.eventtype.IEventTypeService;
 import com.project.comit.security.model.ILoginService;
@@ -54,6 +56,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	@Autowired
 	private ISkillLevelService skillLevel;
 	@Autowired
+	private IEventStatusService eventStatusService;
+
+	@Autowired
 	private IEventService eventService;
 	@Autowired
 	private IChallengeService challengeService;
@@ -75,6 +80,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		this.createAndPersistEventTypes();
 		this.createAndPersistTechnologies();
 		this.createAndPersistSkillLevels();
+		this.createAndPersistEventStatuses();
 
 		this.createAndPersistEventsAndChallenges();
 		this.createAndPersistSolutions();
@@ -152,6 +158,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		this.skillLevel.insert(skillLevel3);
 	}
 
+	private void createAndPersistEventStatuses() {
+		EventStatus eventStatus1 = new EventStatus("Completed");
+		EventStatus eventStatus2 = new EventStatus("Ongoing");
+
+		this.eventStatusService.insert(eventStatus1);
+		this.eventStatusService.insert(eventStatus2);
+	}
+
 	private void createAndPersistEventsAndChallenges() {
 		List<EventType> eventTypes = this.eventTypeService.findAll();
 		List<Technology> technologies = this.technologyService.findAll();
@@ -160,21 +174,21 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		Challenge challenge1 = new Challenge("Addition", "Code 2 + 2", this.getRnFromList(skillLevels));
 		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		Challenge challenge2 = new Challenge("Substraction", "Code 2 - 2", this.getRnFromList(skillLevels));
-		challenge1.setTechnologies(this.getRnFromList(technologies));
+		challenge2.setTechnologies(this.getRnFromList(technologies));
 		Challenge challenge3 = new Challenge("Multiply", "Code 2 * 2", this.getRnFromList(skillLevels));
-		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
+		challenge3.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		Challenge challenge4 = new Challenge("Divide", "Code 2 / 2", this.getRnFromList(skillLevels));
-		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
+		challenge4.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies));
 		Challenge challenge5 = new Challenge("Simple calculator", "Code a simple calculator",
 				this.getRnFromList(skillLevels));
-		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
+		challenge5.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies), this.getRnFromList(technologies));
 		Challenge challenge6 = new Challenge("Complex calculator", "Code a complex calculator",
 				this.getRnFromList(skillLevels));
-		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
+		challenge6.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		Challenge challenge7 = new Challenge("Simply code", "Code somehting", this.getRnFromList(skillLevels));
-		challenge1.setTechnologies(this.getRnFromList(technologies));
+		challenge7.setTechnologies(this.getRnFromList(technologies));
 
 		Event event1 = new Event("Event A",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
@@ -197,14 +211,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
-				toDate("15-10-2019"), toDate("15-11-2019"), this.getRnFromList(eventTypes));
+				toDate("15-10-2019"), toDate("25-11-2019"), this.getRnFromList(eventTypes));
 		event3.setTags("Programming", "Java", "Algorithms");
 		event3.addChallenge(challenge6);
 		Event event4 = new Event("Event D",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
-				toDate("01-10-2019"), toDate("01-11-2019"), this.getRnFromList(eventTypes));
+				toDate("01-10-2019"), toDate("01-12-2019"), this.getRnFromList(eventTypes));
 		event4.setTags("Programming", "Begginer", "Math");
 		event4.addChallenge(challenge7);
 

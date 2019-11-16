@@ -3,15 +3,21 @@ package com.project.comit.entities.event;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -34,17 +40,21 @@ public class Event {
 	private LocalDate endDate;
 	@ManyToOne
 	private EventType eventType;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "event_technology", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "tehchnology_id"))
+	private Set<Technology> technologies;
 	@JsonIgnoreProperties(value = "event")
 	@OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Challenge> challenges;
 	@ElementCollection
-	private List<String> tags;
+	private Set<String> tags;
 
 	/* ----- CONSTRUCTORS ----- */
 	public Event() {
 		super();
+		this.technologies = new HashSet<Technology>();
 		this.challenges = new ArrayList<Challenge>();
-		this.tags = new ArrayList<String>();
+		this.tags = new HashSet<String>();
 	}
 
 	public Event(String name, String description, LocalDate startDate, LocalDate endDate, EventType eventType) {
@@ -54,8 +64,9 @@ public class Event {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.eventType = eventType;
+		this.technologies = new HashSet<Technology>();
 		this.challenges = new ArrayList<Challenge>();
-		this.tags = new ArrayList<String>();
+		this.tags = new HashSet<String>();
 	}
 
 	/* ----- GETTERS & SETTERS ----- */
@@ -103,6 +114,14 @@ public class Event {
 		this.eventType = eventType;
 	}
 
+	public Set<Technology> getTechnologies() {
+		return technologies;
+	}
+
+	public void setTechnologies(Technology... technologies) {
+		this.technologies = new HashSet<Technology>(Arrays.asList(technologies));
+	}
+
 	public List<Challenge> getChallenges() {
 		return challenges;
 	}
@@ -111,23 +130,32 @@ public class Event {
 		this.challenges = challenges;
 	}
 
-	public List<String> getTags() {
+	public Set<String> getTags() {
 		return tags;
 	}
-	
+
 	public void setTags(String... tags) {
-		this.tags = Arrays.asList(tags);
+		this.tags = new HashSet<String>(Arrays.asList(tags));
 	}
 
 	/* ----- METHODS ----- */
 	public void addChallenge(Challenge challenge) {
 		this.challenges.add(challenge);
+		
+		challenge.getTechnologies().forEach(technology -> {
+			this.addTechnology(technology);
+		});
+		
 		challenge.setEvent(this);
 	}
 
 	public void removeChallenge(Challenge challenge) {
 		this.challenges.remove(challenge);
 		challenge.setEvent(null);
+	}
+	
+	public void addTechnology(Technology technology) {
+		this.technologies.add(technology);
 	}
 
 }

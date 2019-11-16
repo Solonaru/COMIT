@@ -1,0 +1,6 @@
+<div class="filter__group">
+    <select name="{{ filterField }}" id="{{ filterField }}" class="filter__select">
+        <option value="-1" disabled selected>{{ filterField }}</option>
+        <option value="" *ngFor="let enumObject of enumObjects" (click)="onSelect(enumObject)">{{ enumObject }}</option>
+    </select>
+</div>

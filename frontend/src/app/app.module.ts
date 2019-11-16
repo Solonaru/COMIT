@@ -36,6 +36,9 @@ import { EventManagerComponent } from './views/admin-side/event-manager/event-ma
 import { FooterComponent } from './components/footer/footer.component';
 import { EventListComponent } from './views/user-side/event-feature/event-list/event-list.component';
 import { EventItemComponent } from './views/user-side/event-feature/event-list/event-item/event-item.component';
+import { FilterComponent } from './views/user-side/event-feature/filter/filter.component';
+import { FilterFieldComponent } from './views/user-side/event-feature/filter/filter-field/filter-field.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -67,6 +70,8 @@ import { EventItemComponent } from './views/user-side/event-feature/event-list/e
     FooterComponent,
     EventListComponent,
     EventItemComponent,
+    FilterComponent,
+    FilterFieldComponent,
 
   ],
   imports: [
@@ -81,7 +86,8 @@ import { EventItemComponent } from './views/user-side/event-feature/event-list/e
     provide: SWIPER_CONFIG,
     useValue: DEFAULT_SWIPER_CONFIG
   },
-    httpInterceptorProviders],
+    httpInterceptorProviders,
+    DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

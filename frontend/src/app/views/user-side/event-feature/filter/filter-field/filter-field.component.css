@@ -1,0 +1,12 @@
+.filter__group {
+    margin-top: 20px;
+}
+
+.filter__select {
+    width: 100%;
+    border: 1px solid #0d3980;
+    padding: 0 10px;
+    border-radius: 5px;
+    height: 35px;
+    color: #0d3980;
+}
