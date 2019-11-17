@@ -13,19 +13,17 @@ import { AboutComponent } from './views/user-side/presentation-feature/about/abo
 import { ContactComponent } from './views/user-side/presentation-feature/contact/contact.component';
 import { DashboardComponent } from './views/admin-side/dashboard/dashboard.component';
 import { AccountManagerComponent } from './views/admin-side/account-manager/account-manager.component';
-// import { EventManagerComponent } from './views/admin-side/event-manager/event-manager.component';
 import { ChallengesComponent } from './views/user-side/event-feature/challenges/challenges.component';
-import { ChallengeComponent } from './views/user-side/event-feature/challenges/challenge/challenge.component';
-import { InstructionsComponent } from './views/user-side/event-feature/challenges/challenge/instructions/instructions.component';
-import { CodeComponent } from './views/user-side/event-feature/challenges/challenge/code/code.component';
-import { ResourcesComponent } from './views/user-side/event-feature/challenges/challenge/resources/resources.component';
-import { SolutionsComponent } from './views/user-side/event-feature/challenges/challenge/solutions/solutions.component';
+import { ChallengeComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge/challenge.component';
+import { InstructionsComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge/instructions/instructions.component';
+import { CodeComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge/code/code.component';
+import { ResourcesComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge/resources/resources.component';
+import { SolutionsComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge/solutions/solutions.component';
 import { EventsComponent } from './views/user-side/event-feature/events.component';
 import { GeneralManagerComponent } from './views/admin-side/general-manager/general-manager.component';
 import { EventManagerComponent } from './views/admin-side/general-manager/event-manager/event-manager.component';
 import { ChallengeManagerComponent } from './views/admin-side/general-manager/challenge-manager/challenge-manager.component';
 import { SolutionManagerComponent } from './views/admin-side/general-manager/solution-manager/solution-manager.component';
-import { EventManager } from '@angular/platform-browser';
 
 const routes: Routes = [
     {
@@ -74,10 +72,6 @@ const routes: Routes = [
         path: 'account-manager',
         component: AccountManagerComponent,
     },
-    // {
-    //     path: 'event-manager',
-    //     component: EventManagerComponent
-    // },
     {
         path: 'events',
         component: EventsComponent

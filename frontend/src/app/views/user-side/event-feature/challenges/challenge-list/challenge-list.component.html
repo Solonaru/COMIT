@@ -1,0 +1,6 @@
+<div class="challenges-list">
+    <app-challenge-item
+        *ngFor="let challenge of challenges; let i = index"
+        [challenge]="challenge"
+        [index]="i"></app-challenge-item>
+</div>

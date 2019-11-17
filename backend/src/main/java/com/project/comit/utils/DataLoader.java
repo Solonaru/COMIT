@@ -172,22 +172,29 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		List<SkillLevel> skillLevels = this.skillLevel.findAll();
 
 		Challenge challenge1 = new Challenge("Addition", "Code 2 + 2", this.getRnFromList(skillLevels));
+		challenge1.setTags("Programming", "Addition", "Math", "Algebra");
 		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		Challenge challenge2 = new Challenge("Substraction", "Code 2 - 2", this.getRnFromList(skillLevels));
+		challenge2.setTags("Substraction", "Math");
 		challenge2.setTechnologies(this.getRnFromList(technologies));
 		Challenge challenge3 = new Challenge("Multiply", "Code 2 * 2", this.getRnFromList(skillLevels));
+		challenge3.setTags("Programming", "Multiply", "Math", "Algebra");
 		challenge3.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		Challenge challenge4 = new Challenge("Divide", "Code 2 / 2", this.getRnFromList(skillLevels));
+		challenge4.setTags("Programming", "Divide", "Math");
 		challenge4.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies));
 		Challenge challenge5 = new Challenge("Simple calculator", "Code a simple calculator",
 				this.getRnFromList(skillLevels));
+		challenge5.setTags("Programming", "Addition", "Substraction", "Code", "Math", "Algebra");
 		challenge5.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies), this.getRnFromList(technologies));
 		Challenge challenge6 = new Challenge("Complex calculator", "Code a complex calculator",
 				this.getRnFromList(skillLevels));
+		challenge6.setTags("Math", "Algebra");
 		challenge6.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		Challenge challenge7 = new Challenge("Simply code", "Code somehting", this.getRnFromList(skillLevels));
+		challenge7.setTags("Programming", "Code");
 		challenge7.setTechnologies(this.getRnFromList(technologies));
 
 		Event event1 = new Event("Event A",

@@ -3,10 +3,9 @@
     border-radius: 5px;
 }
 
-/* TODO: @Andrew any clue on how to fix it */
-.event {
+/* .event {
     margin: 10px 0;
-}
+} */
 
 .event:hover {
     box-shadow: -1px 0px 9px 3px rgba(0, 0, 0, 0.46);
@@ -36,6 +35,7 @@
     transform: scale(.95);
 }
 
+/* TODO: @Andrew any clue on how to fix it (last-child doens't make sense in this context)*/
 .event__tag:not(:last-child) {
     margin-right: 15px;
 }

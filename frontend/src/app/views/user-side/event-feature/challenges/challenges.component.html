@@ -1,67 +1,11 @@
 <div class="challenges">
     <div class="row">
         <div class="col-12 col-md-5 col-lg-3">
-            <!-- <form class="sort">
-                <p class="sort__title">Filter by</p>
-                <div class="sort__group">
-                    <select name="eventType" id="eventType" class="sort__select">
-                        <option value="-1" disabled selected>Event Type</option>
-                        <option value="" *ngFor="let eventType of eventTypes">{{ eventType }}</option>
-                    </select>
-                </div>
-                <div class="sort__group">
-                    <select name="eventName" id="eventName" class="sort__select">
-                        <option value="-1" disabled selected>Event Name</option>
-                        <option value="">IT Event 1</option>
-                        <option value="">IT Event 2</option>
-                        <option value="">IT Event 3</option>
-                    </select>
-                </div>
-                <div class="sort__group">
-                    <select name="technology" id="technology" class="sort__select">
-                        <option value="-1" disabled selected>Technology</option>
-                        <option value="" *ngFor="let technology of technologies">{{ technology }}</option>
-                    </select>
-                </div>
-                <div class="sort__group">
-                    <select name="level" id="level" class="sort__select">
-                        <option value="-1" disabled selected>Level</option>
-                        <option value="" *ngFor="let skillLevel of skillLevels">{{ skillLevel }}</option>
-                    </select>
-                </div>
-                <div class="sort__button-container">
-                    <button type="submit" class="general-button sort__button">Filter Events</button>
-                </div>
-            </form> -->
-            <app-filter [filterFields]="['eventType', 'technology', 'skillLevel']"></app-filter>
+            <app-filter [filterFields]="['technology', 'skillLevel']"></app-filter>
         </div>
         <div class="col-12 col-md-7 col-lg-9">
-            <div class="challenges-list">
-                <div class="challenge" (click)="goToPage()">
-                    <h1 class="challenge__title">Return the First Element in an Array</h1>
-                    <div class="challenge__content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed voluptatibus!
-                    </div>
-                    <div class="challenge__tags">
-                        <i class="fa fa-tags challenge__icon" aria-hidden="true"></i>
-                        <a href="#" class="challenge__tag">Programming</a>
-                        <a href="#" class="challenge__tag">Beginner</a>
-                        <a href="#" class="challenge__tag">Math</a>
-                    </div>
-                </div>
-                <div class="challenge" (click)="goToPage()">
-                    <h1 class="challenge__title">Return the First Element in an Array</h1>
-                    <div class="challenge__content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed voluptatibus!
-                    </div>
-                    <div class="challenge__tags">
-                        <i class="fa fa-tags challenge__icon" aria-hidden="true"></i>
-                        <a href="#" class="challenge__tag">Programming</a>
-                        <a href="#" class="challenge__tag">Beginner</a>
-                        <a href="#" class="challenge__tag">Math</a>
-                    </div>
-                </div>
-            </div>
+            <app-challenge-list
+                [eventId]="eventId"></app-challenge-list>
         </div>
     </div>
 </div>

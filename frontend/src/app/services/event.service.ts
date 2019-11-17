@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { take, map, tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 import { EnumObjectService } from './enum-object.service';
 import { Event } from '../models/event.model';
 import { DatePipe } from '@angular/common';
@@ -26,7 +26,10 @@ export class EventService {
 
     filterEvents() {
         let filteredEvents: Event[] = this.events.filter(event => {
-            return this.checkEventStatus(event) && this.checkEventType(event) && this.checkTechnology(event);
+            return true &&
+                this.checkEventStatus(event) &&
+                this.checkEventType(event) &&
+                this.checkTechnology(event);
         });
 
         this.setEvents(filteredEvents);
@@ -36,7 +39,7 @@ export class EventService {
         const eventStatus = this.enumObjectService.getEnumObject('eventStatus');
         const today: string = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
 
-        if (eventStatus) {
+        if (eventStatus && eventStatus != 'All') {
             return eventStatus == 'Completed' ?
                 (today > event.endDate.toString()) :
                 (today <= event.endDate.toString() && today >= event.startDate.toString());
@@ -48,7 +51,7 @@ export class EventService {
     private checkEventType(event: Event): boolean {
         const eventType = this.enumObjectService.getEnumObject('eventType');
 
-        if (eventType) {
+        if (eventType && eventType != 'All') {
             return event.eventType.name == eventType;
         }
 
@@ -58,7 +61,7 @@ export class EventService {
     private checkTechnology(event: Event): boolean {
         const technology = this.enumObjectService.getEnumObject('technology');
 
-        if (technology) {
+        if (technology && technology != 'All') {
             return (event.technologies.map(technology => technology.name)).indexOf(technology) !== -1;
         }
 
@@ -74,15 +77,6 @@ export class EventService {
             .get<Event[]>(this.eventUrl + "/all")
             .pipe(
                 take(1),
-                map(events => {
-                    return events.map(event => {
-                        return {
-                            ...event, technologies: event.technologies.map(technology => {
-                                return technology;
-                            })
-                        };
-                    })
-                }),
                 tap(events => {
                     this.events = events;
                     this.setEvents(events);

@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.comit.entities.event.Event;
+
 @Service
 public class ChallengeService implements IChallengeService {
 
@@ -18,6 +20,10 @@ public class ChallengeService implements IChallengeService {
 
 	public List<Challenge> findAll() {
 		return (List<Challenge>) challengeRepository.findAll();
+	}
+	
+	public List<Challenge> findAllByEvent(Event event) {
+		return challengeRepository.findAllByEvent(event);
 	}
 
 	public void insert(Challenge challenge) {

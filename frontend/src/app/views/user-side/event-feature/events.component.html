@@ -1,31 +1,6 @@
 <div class="events">
     <div class="row">
         <div class="col-12 col-md-5 col-lg-3">
-            <!-- <form class="sort">
-                <p class="sort__title">Filter by</p>
-                <div class="sort__group">
-                    <select name="eventType" id="eventType" class="sort__select">
-                        <option value="-1" disabled selected>Event Type</option>
-                        <option value="" *ngFor="let eventType of eventTypes">{{ eventType }}</option>
-                    </select>
-                </div>
-                <div class="sort__group">
-                    <select name="technology" id="technology" class="sort__select">
-                        <option value="-1" disabled selected>Technology</option>
-                        <option value="" *ngFor="let technology of technologies">{{ technology }}</option>
-                    </select>
-                </div>
-                <div class="sort__group">
-                    <select name="status" id="status" class="sort__select">
-                        <option value="-1" disabled selected>Status</option>
-                        <option value="">Completed</option>
-                        <option value="">Ongoing</option>
-                    </select>
-                </div>
-                <div class="sort__button-container">
-                    <button type="submit" class="general-button sort__button">Filter Events</button>
-                </div>
-            </form> -->
             <app-filter [filterFields]="['eventType', 'technology', 'eventStatus']"></app-filter>
         </div>
         <div class="col-12 col-md-7 col-lg-9">

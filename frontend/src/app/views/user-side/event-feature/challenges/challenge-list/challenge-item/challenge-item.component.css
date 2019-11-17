@@ -1,0 +1,42 @@
+.challenge {
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* TODO: @Andrew any clue on how to fix it (last-child doens't make sense in this context)*/
+.challenge:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.challenge:hover {
+    box-shadow: -1px 0px 9px 3px rgba(0,0,0,0.46);
+    cursor: pointer;
+}
+
+.challenge__icon {
+    margin-right: 10px;
+}
+
+.challenge__tags {
+    margin-top: 15px;
+}
+
+.challenge__tag, .challenge__tag:link, .challenge__tag:active {
+    border: 1px solid #0d3980;
+    color: #0d3980;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 5px;
+    transition: transform 250ms ease-in-out;
+    box-shadow: -1px 9px 9px -10px rgba(0,0,0,0.46);
+}
+
+.challenge__tag:hover, .challenge__tag:focus {
+    text-decoration: none;
+
+    transform: scale(.95);
+}
+
+.challenge__tag:not(:last-child) {
+    margin-right: 15px;
+}

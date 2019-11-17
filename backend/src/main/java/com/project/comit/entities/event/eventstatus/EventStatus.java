@@ -40,4 +40,5 @@ public class EventStatus {
 	public void setName(String type) {
 		this.name = type;
 	}
+	
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { EnumObjectService } from 'src/app/services/enum-object.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-challenges',
@@ -8,12 +7,17 @@ import { EnumObjectService } from 'src/app/services/enum-object.service';
   styleUrls: ['./challenges.component.css']
 })
 export class ChallengesComponent implements OnInit {
+  eventId: number;
 
-  constructor(private router: Router) { }
+  constructor(private route: ActivatedRoute) { }
 
-  ngOnInit() { }
-
-  goToPage() {
-    this.router.navigate(['/challenge', '1'])
+  ngOnInit() {
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.eventId = +params['id'];
+        }
+      );
   }
+
 }

@@ -1,0 +1,10 @@
+<div class="challenge" (click)="goToPage()">
+    <h1 class="challenge__title">{{ challenge.title }}</h1>
+    <div class="challenge__content">
+        {{ challenge.content }}
+    </div>
+    <div class="challenge__tags">
+        <i class="fa fa-tags challenge__icon" aria-hidden="true"></i>
+        <a href="#" class="challenge__tag" *ngFor="let tag of challenge.tags">{{ tag }}</a>
+    </div>
+</div>

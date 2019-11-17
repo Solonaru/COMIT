@@ -34,6 +34,7 @@ public class Event {
 	@SequenceGenerator(name = "event_generator", sequenceName = "event_sequence", initialValue = 1, allocationSize = 1)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
+	@Column(name = "name", unique = true)
 	private String name;
 	private String description;
 	private LocalDate startDate;

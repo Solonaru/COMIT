@@ -97,6 +97,7 @@ export class EnumObjectService {
                 take(1),
                 map(responseData => {
                     const arr: string[] = [];
+                    arr.push("All");
                     responseData.forEach(function (value) {
                         arr.push(value.name);
                     });

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Event } from 'src/app/models/event.model';
 
 @Component({
   selector: 'app-event-item',
@@ -8,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class EventItemComponent implements OnInit {
   @Input() event: Event;
-  @Input() index: number;
 
   constructor(private router: Router ) { }
 
@@ -16,7 +16,7 @@ export class EventItemComponent implements OnInit {
   }
 
   goToPage() {
-    this.router.navigate(['/challenges', this.index]);
+    this.router.navigate(['/challenges', this.event.id]);
   }
 
 }

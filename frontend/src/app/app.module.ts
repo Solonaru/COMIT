@@ -19,11 +19,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { EventsComponent } from './views/user-side/event-feature/events.component';
 
 import { ChallengesComponent } from './views/user-side/event-feature/challenges/challenges.component';
-import { ChallengeComponent } from './views/user-side/event-feature/challenges/challenge/challenge.component';
-import { InstructionsComponent } from './views/user-side/event-feature/challenges/challenge/instructions/instructions.component';
-import { CodeComponent } from './views/user-side/event-feature/challenges/challenge/code/code.component';
-import { ResourcesComponent } from './views/user-side/event-feature/challenges/challenge/resources/resources.component';
-import { SolutionsComponent } from './views/user-side/event-feature/challenges/challenge/solutions/solutions.component';
+import { ChallengeComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge/challenge.component';
+import { InstructionsComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge/instructions/instructions.component';
+import { CodeComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge/code/code.component';
+import { ResourcesComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge/resources/resources.component';
+import { SolutionsComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge/solutions/solutions.component';
 
 import { LoginComponent } from './views/user-side/auth-feature/login/login.component';
 import { RegisterComponent } from './views/user-side/auth-feature/register/register.component';
@@ -43,6 +43,8 @@ import { EventItemComponent } from './views/user-side/event-feature/event-list/e
 import { FilterComponent } from './views/user-side/event-feature/filter/filter.component';
 import { FilterFieldComponent } from './views/user-side/event-feature/filter/filter-field/filter-field.component';
 import { DatePipe } from '@angular/common';
+import { ChallengeListComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-list.component';
+import { ChallengeItemComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge-item.component';
 
 
 @NgModule({
@@ -77,10 +79,11 @@ import { DatePipe } from '@angular/common';
     EventItemComponent,
     FilterComponent,
     FilterFieldComponent,
+    ChallengeListComponent,
+    ChallengeItemComponent,
     GeneralManagerComponent,
     ChallengeManagerComponent,
-    SolutionManagerComponent,
-
+    SolutionManagerComponent
   ],
   imports: [
     BrowserModule,
