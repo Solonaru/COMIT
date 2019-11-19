@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>COMIT</title>
+    <link rel="stylesheet" href="css/scholarly.min.css">
+    <script src="js/scholarly.min.js"></script>
+  </head>
+  <body prefix="schema: http://schema.org">
+    <header>
+      <div class="banner">
+        <img src="scholarly-html.svg" width="227" height="50" alt="Scholarly HTML logo">
+        <div class="status">Community Draft</div>
+      </div>
+      <h1>Competitive IT Events</h1>
+    </header>
+    <!--
+      XXX
+      - check refs
+      - the math example has too much maths
+      - bring back some of the old style
+      - make semantics, validation, processing sub-sections of each structural element
+      - have a section before that for general constructs
+        - explain why use RDFa
+        - explain our patterns: RDFa, roles
+      - figure captions need to get set throughout
+      - dedication? see doc-dedication
+      - syntactic constraints (prefix)
+      - needs more sthenurines
+      - examples of everything
+      - some notes on using Semantic CSS
+      - needs more RDFa in the spec itself
+    -->
+    <div role="contentinfo">
+      <dl>
+        <dt>Authors</dt>
+        <dd>
+          <a href="https://github.com/claudiaflorea">Mihaela-Claudia Florea</a>
+          &amp;
+          <a href="https://github.com/andrei-h9">Andrei-Stelian Humulescu</a>
+		  &amp;
+          <a href="https://github.com/Solonaru">Viorel Solonaru</a>
+        </dd>
+        <dt>Git Repository</dt>
+        <dd>
+          <a href="https://github.com/Solonaru/COMIT">COMIT - Competitive IT Events</a>
+        </dd>
+      </dl>
+    </div>
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+      <h2>Abstract</h2>
+      <p>
+        COMIT stands for "Competitive IT Events" a Web service-oriented application which provides
+		means to explore, filter, visualize, and update information regarding the participants to
+		various IT competitive events (e.g., programming or algorithm-related competitions,
+		Web challenges, hackathons, etc.) and their submitted solutions.
+		<p>Furthermore, the system provides useful recommendations
+		about alternative solutions, additional tips & tricks, similar problems and events, tutorials, on-line
+		courses, public code repositories, interesting persons (mentors, winners, organizing entities, sponsors,
+		and others).</p>
+		<p>The web application is built with Java on the server-side, using Spring Boot as a framework
+		and PostgreSql with pgAdmin4; as for the client-side, the application is build with Angular 8. Moreover,
+		the application is built upon MVC architecture.</p>
+      </p>
+    </section>
+	
+    <section id="introduction" role="doc-introduction">
+      <!-- review? -->
+      <h2>Introduction</h2>
+      <p>
+        In this Scholarly HTML technical report we will try to cover the preliminary considerations
+		about the Web application design and interaction, the provenece of external data resources and
+		the applied technologies and pattern applied in the development process.
+      </p>
+      <p>
+        We will start with an application overview, by explaning the main functionalities available
+		to the final users, as well as which are the main functionalities that will be provided to the end user.
+      </p>
+      <p>
+        The next step would be provide basic information about the used technologies and the implied
+		programming languages, as well as some informations about the used database technologies.
+      </p>
+	  <p>
+		To round up we will provide the developers considerations and the limitations encountered throughout
+		the development process. As a reminder the ongoing development of the application can be followed at
+		<a href="https://github.com/Solonaru/COMIT">our github repository</a>. Feel free to provide suggestions
+		or suggest improvements.
+	  </p>
+    </section>
+	
+	<section id="methodology">
+      <!-- review? -->
+	  <h2>Development methodology</h2>
+	  <p>
+		Waterfall methodology is a linear project management approach, where stakeholder and customer requirements
+		are gathered at the beginning of the project, and then a sequential project plan is created to accommodate
+		those requirements.
+	  </p>
+	  <p>
+		The 5 phases used in the develompent process of this project are:
+	  </p>
+		<ol>
+			<li><b>Requirements</b>: The key aspect of waterfall is that all customer requirements are gathered at
+			the beginning of the project, allowing every other phase to be planned without further customer
+			involvement until the product is complete. It is assumed that all requirements can be gathered 
+			at this phase.</li>
+			<li><b>Design</b>: The design phase is best broken up into logical design and physical design subphases.
+			The logical design subphase is when possible solutions are brainstormed and theorized. The physical
+			design subphase is when those theoretical ideas and schemas are made into concrete specifications.</li>
+			<li><b>Implementation</b>: The implementation phase is when programmers assimilate the requirements and
+			specifications from the previous phases and produce actual code.</li>
+			<li><b>Verification</b>:  This phase is when the customer reviews the product to make sure that it meets
+			the requirements laid out at the beginning of the project. This is done by releasing a completed
+			product to the customer.</li>
+			<li><b>Maintenance</b>:  The customer is regularly using the product during the maintenance phase,
+			discovering bugs, inadequate features and other errors that occurred during production. The
+			production team applies these fixes as necessary until the customer is satisfied.</li>
+		</ol>
+      </p>
+    </section>
+	
+    <section id="main_func">
+      <!-- review? -->
+      <h2>Main functionalities</h2>
+      <p>
+        The main functionalities and feautures of the COMIT Web Application are split on:
+		<ul>
+			<li><a href="#guest_func">Guest functionalities</a> - mainly login and register;</li>
+			<li><a href="#user_func">User functionalities</a> - how the standard will interact with the application and what functionalities
+				are available to such users;</li>
+			<li><a href="#admin_func">Admin functionalities</a> - mainly the functionalities which regard the administration and maintance
+				of the application.</li>
+		</ul>
+      </p>
+	  <section id="guest_func">
+        <!-- review? -->
+        <h3>Guest functionalities</h3>
+        <p>
+          The main functionalities available to guest users are:
+			<ul>
+				<li>A guest would be able to create a new account through the "Sign Up" page;</li>
+				<li>A guest would be able to login through the "Login" page;</li>
+				<li>A guest can visualize all the available events and challenges, but can't provide solutions to challenges.</li>
+			</ul>
+        </p>
+        <p>
+          The functionalities provided to the guest user are quite limited, as other interactions require informations about the user.
+        </p>
+      </section>
+      <section id="user_func">
+        <!-- review? -->
+        <h3>User functionalities</h3>
+        <p>
+          The main functionalities available to standard users are:
+        </p>
+        <ul>
+			<li>A standard user can visualize all the available events;</li>
+			<li>A standard user can visualize all the events available challenges;</li>
+			<li>A standard user can filter events by:
+				<ul>
+					<li>Event type;</li>
+					<li>Technology;</li>
+					<li>Knowledge level;</li>
+					<li>Status.</li>
+				</ul>
+			</li>
+			<li>A standard user can provide solutions to active challenges;</li>
+			<li>A standard user can visualize the alternative provided solutions.</li>
+		</ul>
+		<p>
+          Standard user have a wider range of functionalities compared to guest users.
+        </p>
+      </section>
+      <section id="admin_func">
+        <!-- review? -->
+        <h3>Admin functionalities</h3>
+        <p>
+          The admin has mainly the administrative functionalities required to mantain the application
+		  and ensure its normal flow as well as provide new content. The available functionalities are:
+			<ul>
+				<li>Add new events;</li>
+				<li>Add challenges to events;</li>
+				<li>Provide alternative solutions to challenges.</p>
+			</ul>
+        </p>
+      </section>
+	</section>
+	
+    <section id="technologies">
+      <!-- review? -->
+      <h2>Technologies</h2>
+      <p>
+        The main technologies used for the COMIT Web application are:
+		<ul>
+			<li>Backend: Java + Maven + Spring Boot</li>
+			<li>Frontend: Angular 2+ with Bootstrap (CSS framework)</li>
+			<li>DB: PostgreSQL</li>
+		</ul>
+      </p>
+    </section>
+	
+	<section id="prerequisites">
+      <!-- review? -->
+      <h2>Prerequisites</h2>
+	  <section id="angular_cli">
+        <!-- review? -->
+        <h3>Angular CLI</h3>
+        <p>
+          Angular Command Line Interface can be installed through npm. Angular CLI
+		  is required to generate new angular project, angular components, service
+		  and so on. Download and install Node from their official website and run
+		  the below npm command to install angular CLI.
+        </p>
+        <p>
+          To publish and install packages to and from the public npm registry or your
+		  company’s npm Enterprise registry, you must install Node.js and the npm
+		  command line interface using either a Node version manager or a Node
+		  installer. We strongly recommend using a Node version manager to install
+		  Node.js and npm. We do not recommend using a Node installer, since the
+		  Node installation process installs npm in a directory with local
+		  permissions and can cause permissions errors when you run npm packages
+		  globally.		  
+        </p>
+		<figure typeof="schema:SoftwareSourceCode" resource="#npm-install" id="npm-install">
+          <pre><code>
+			npm install npm -g
+          </code></pre>
+        </figure>		
+		<p>
+		  To see if you already have Node.js and npm installed and check the installed
+		  version, run the following commands:
+		</p>
+		<figure typeof="schema:SoftwareSourceCode" resource="#node-npm" id="node-npm">
+          <pre><code>
+			node -v
+			npm -v
+          </code></pre>
+        </figure>
+		<p>
+		  Now install Angular CLI:
+		</p>
+		<figure typeof="schema:SoftwareSourceCode" resource="#install-angular-cli" id="install-angular-cli">
+          <pre><code>
+			npm install -g @angular/cli
+          </code></pre>
+        </figure>
+      </section>
+	  
+      <section id="spring_tool_suite">
+        <!-- review? -->
+        <h3>Spring Tool Suite</h3>
+        <p>
+          Spring Tool Suite can be download from Spring website. Extract the zip
+		  and the run the .exe file to start with STS
+        </p>
+      </section>
+	  
+      <section id="database">
+        <!-- review? -->
+        <h3>PostgreSQL and pgAdmin</h3>
+        <p>
+          The latest version of pgAdmin can be downloaded at  their official website.
+        </p>
+      </section>
+	  
+	  <section id="build_tools">
+        <!-- review? -->
+        <h3>Build Tools</h3>
+        <p>
+          Spring - The web framework used
+        </p>
+		<p>
+          Maven - Build Tool and Dependency Management Tool
+        </p>
+      </section>
+	</section>
+	
+	<section id="install">
+      <!-- review? -->
+      <h2>Install</h2>
+      <p>
+        In order to run this application on your local machine,
+		you must download a copy of this project and import it in your IDE
+		(either Eclipse/ VS Code / IntelliJ). Using the source code provided
+		in this repository, you can import the project by cloning it with
+		the project's URL, or you can download the ZIP folder and import
+		the unzipped project.
+      </p>
+	  <p>
+	    Once you have imported the project, before running it, you must
+		first create an empty database in pgAdmin. After creating the
+		database, you must got to ApplicationProperties.java file and
+		change the properties to match your local database, including
+		database name, database URL and password.
+	  </p>
+    </section>
+	
+	<section id="conclusions">
+      <!-- review? -->
+      <h2>Conclusions</h2>
+      <p>
+        In conclusion, COMIT is a web application, designed and developed
+		for programmers of all levels, where they can practice their coding
+		skills faster and more efficient. The platform offers a considerable
+		number of IT competitions, each having multiple challenges.
+		Users can participate in these challenges and submit their solutions,
+		using whatever programming language and difficulty level that best suits
+		them.
+      </p>
+	  <p>
+	    The design of the application was made using Balsamiq Wireframes
+		Cloud tool; the back-end was built on Java, using Spring Tool Suite
+		and the front-end was built on JavaScript, CSS and HTML, using
+		Angular CLI Framework.
+	  </p>
+	</section>
+
+    <section id="acks">
+      <!-- review? -->
+      <h2>Acknowledgements</h2>
+    </section>
+  </body>
+</html>
