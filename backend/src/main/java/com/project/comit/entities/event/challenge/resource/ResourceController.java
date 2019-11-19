@@ -1,4 +1,4 @@
-package com.project.comit.entities.event;
+package com.project.comit.entities.event.challenge.resource;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,37 +16,36 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.comit.entities.IEntityController;
 
 @RestController
-@RequestMapping("/event")
+@RequestMapping("/resource")
 @CrossOrigin(origins = "http://localhost:4200")
-public class EventController implements IEntityController<Event, Long> {
+public class ResourceController implements IEntityController<Resource, Long> {
 
 	@Autowired
-	private IEventService eventService;
+	private IResourceService resourceService;
 
-	@PreAuthorize("hasRole('ROLE_USER')")
-	@RequestMapping(value = "/{eventId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Optional<Event> findById(@PathVariable("eventId") Long eventId) {
-		return eventService.findById(eventId);
+	@RequestMapping(value = "/{resourceId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Optional<Resource> findById(@PathVariable("resourceId") Long resourceId) {
+		return resourceService.findById(resourceId);
 	}
 
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Event> getAll() {
-		return eventService.findAll();
+	public List<Resource> getAll() {
+		return resourceService.findAll();
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void insert(@RequestBody Event event) {
-		eventService.insert(event);
+	public void insert(@RequestBody Resource resource) {
+		resourceService.insert(resource);
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void update(@RequestBody Event event) {
-		eventService.update(event);
+	public void update(@RequestBody Resource resource) {
+		resourceService.update(resource);
 	}
 
-	@RequestMapping(value = "/delete/{eventId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void delete(@PathVariable("eventId") Long eventId) {
-		eventService.deleteById(eventId);
+	@RequestMapping(value = "/delete/{resourceId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void delete(@PathVariable("resourceId") Long resourceId) {
+		resourceService.deleteById(resourceId);
 	}
 }

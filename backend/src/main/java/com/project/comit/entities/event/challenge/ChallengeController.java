@@ -26,6 +26,7 @@ public class ChallengeController implements IEntityController<Challenge, Long> {
 	@Autowired
 	private IEventService eventService;
 
+	@PreAuthorize("hasRole('ROLE_USER')")
 	@RequestMapping(value = "/{challengeId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<Challenge> findById(@PathVariable("challengeId") Long challengeId) {
 		return challengeService.findById(challengeId);

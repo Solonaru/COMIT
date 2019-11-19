@@ -9,7 +9,6 @@ import { Challenge } from 'src/app/models/challenge.model';
 })
 export class ChallengeItemComponent implements OnInit {
   @Input() challenge: Challenge;
-  @Input() index: number;
 
   constructor(private router: Router) { }
 
@@ -17,7 +16,7 @@ export class ChallengeItemComponent implements OnInit {
   }
 
   goToPage() {
-    this.router.navigate(['/challenge', '1'])
+    this.router.navigate(['/challenge', this.challenge.id])
   }
 
 }

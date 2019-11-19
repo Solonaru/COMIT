@@ -23,6 +23,7 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.comit.entities.event.Event;
+import com.project.comit.entities.event.challenge.resource.Resource;
 import com.project.comit.entities.event.challenge.skilllevel.SkillLevel;
 import com.project.comit.entities.event.challenge.solution.Solution;
 import com.project.comit.entities.event.challenge.technology.Technology;
@@ -50,6 +51,9 @@ public class Challenge {
 	@JsonIgnoreProperties(value = "challenge")
 	@OneToMany(mappedBy = "challenge", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Solution> solutions;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "challenge_resource", joinColumns = @JoinColumn(name = "challenge_id"), inverseJoinColumns = @JoinColumn(name = "resource_id"))
+	private Set<Resource> resources;
 	@ElementCollection
 	private Set<String> tags;
 
@@ -132,6 +136,14 @@ public class Challenge {
 
 	public void setSolutions(List<Solution> solutions) {
 		this.solutions = solutions;
+	}
+
+	public Set<Resource> getResources() {
+		return resources;
+	}
+
+	public void setResources(Resource... resources) {
+		this.resources = new HashSet<Resource>(Arrays.asList(resources));
 	}
 
 	public Set<String> getTags() {

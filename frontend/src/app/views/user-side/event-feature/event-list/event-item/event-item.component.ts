@@ -10,7 +10,7 @@ import { Event } from 'src/app/models/event.model';
 export class EventItemComponent implements OnInit {
   @Input() event: Event;
 
-  constructor(private router: Router ) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }

@@ -18,6 +18,10 @@ export class EventService {
         private enumObjectService: EnumObjectService,
         private datePipe: DatePipe) { }
 
+    getEventById(id: number): Observable<Event> {
+        return this.fetchEventById(id);
+    }
+
     getEvents(): void {
         this.fetchEvents().subscribe(events => {
             console.log(events);
@@ -70,6 +74,14 @@ export class EventService {
 
     private setEvents(events: Event[]): void {
         this.eventsChanged.next(events.slice());
+    }
+
+    private fetchEventById(id: number): Observable<Event> {
+        return this.http
+            .get<Event>(this.eventUrl + "/" + id)
+            .pipe(
+                take(1)
+            );
     }
 
     private fetchEvents(): Observable<Event[]> {

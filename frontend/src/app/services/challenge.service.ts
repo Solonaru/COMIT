@@ -16,6 +16,10 @@ export class ChallengeService {
         private http: HttpClient,
         private enumObjectService: EnumObjectService) { }
 
+    getChallengeById(id: number) : Observable<Challenge> {
+        return this.fetchChallengeById(id);
+    }
+
     getChallenges(): void {
         this.fetchChallenges().subscribe(challenges => {
             console.log(challenges);
@@ -60,6 +64,14 @@ export class ChallengeService {
 
     private setChallenges(challenges: Challenge[]): void {
         this.challengesChanged.next(challenges.slice());
+    }
+
+    private fetchChallengeById(id: number): Observable<Challenge> {
+        return this.http
+            .get<Challenge>(this.challengeUrl + "/" + id)
+            .pipe(
+                take(1)
+            );
     }
 
     private fetchChallenges(): Observable<Challenge[]> {

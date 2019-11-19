@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EnumObjectService } from 'src/app/services/enum-object.service';
 
 @Component({
   selector: 'app-filter',
@@ -10,6 +9,7 @@ export class FilterComponent implements OnInit {
   eventTypes: string[];
   technologies: string[];
   @Input() filterFields: string[];
+  @Input() filterTitle: string;
 
   constructor() { }
 

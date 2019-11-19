@@ -1,11 +1,12 @@
 <div class="challenges">
-    <div class="row">
+    <div class="row" *ngIf="event">
         <div class="col-12 col-md-5 col-lg-3">
-            <app-filter [filterFields]="['technology', 'skillLevel']"></app-filter>
+            <app-filter
+                [filterTitle]="event.name"
+                [filterFields]="['technology', 'skillLevel']"></app-filter>
         </div>
         <div class="col-12 col-md-7 col-lg-9">
-            <app-challenge-list
-                [eventId]="eventId"></app-challenge-list>
+            <app-challenge-list [eventId]="event.id"></app-challenge-list>
         </div>
     </div>
 </div>

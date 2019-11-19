@@ -18,6 +18,8 @@ import com.project.comit.entities.event.Event;
 import com.project.comit.entities.event.IEventService;
 import com.project.comit.entities.event.challenge.Challenge;
 import com.project.comit.entities.event.challenge.IChallengeService;
+import com.project.comit.entities.event.challenge.resource.IResourceService;
+import com.project.comit.entities.event.challenge.resource.Resource;
 import com.project.comit.entities.event.challenge.skilllevel.ISkillLevelService;
 import com.project.comit.entities.event.challenge.skilllevel.SkillLevel;
 import com.project.comit.entities.event.challenge.solution.ISolutionService;
@@ -54,9 +56,11 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	@Autowired
 	private ITechnologyService technologyService;
 	@Autowired
-	private ISkillLevelService skillLevel;
+	private ISkillLevelService skillLevelService;
 	@Autowired
 	private IEventStatusService eventStatusService;
+	@Autowired
+	private IResourceService resourceService;
 
 	@Autowired
 	private IEventService eventService;
@@ -81,6 +85,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		this.createAndPersistTechnologies();
 		this.createAndPersistSkillLevels();
 		this.createAndPersistEventStatuses();
+		this.createAndPersistResources();
 
 		this.createAndPersistEventsAndChallenges();
 		this.createAndPersistSolutions();
@@ -128,7 +133,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		this.loginService.insert(usr4);
 	}
 
-	public void createAndPersistEventTypes() {
+	private void createAndPersistEventTypes() {
 		EventType eventType1 = new EventType("IT Competition");
 		EventType eventType2 = new EventType("Hackaton");
 		EventType eventType3 = new EventType("Web challenge");
@@ -138,7 +143,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		this.eventTypeService.insert(eventType3);
 	}
 
-	public void createAndPersistTechnologies() {
+	private void createAndPersistTechnologies() {
 		Technology tech1 = new Technology("Java");
 		Technology tech2 = new Technology("JavaScript");
 		Technology tech3 = new Technology("Python");
@@ -153,9 +158,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		SkillLevel skillLevel2 = new SkillLevel("Medior");
 		SkillLevel skillLevel3 = new SkillLevel("Senior");
 
-		this.skillLevel.insert(skillLevel1);
-		this.skillLevel.insert(skillLevel2);
-		this.skillLevel.insert(skillLevel3);
+		this.skillLevelService.insert(skillLevel1);
+		this.skillLevelService.insert(skillLevel2);
+		this.skillLevelService.insert(skillLevel3);
 	}
 
 	private void createAndPersistEventStatuses() {
@@ -166,38 +171,100 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		this.eventStatusService.insert(eventStatus2);
 	}
 
+	private void createAndPersistResources() {
+		Resource resource1 = new Resource("MDN", "developer.mozilla.org", "https://developer.mozilla.org/en-US/",
+				"Lorem ipsum dolor sit amet,"
+						+ " consectetur adipisicing elit. Nisi, ipsum ad laudantium, earum est at corporis fugit mollitia"
+						+ " quo minima quasi fuga quia cupiditate repudiandae doloribus perspiciatis illum officiis. Animi?");
+		Resource resource2 = new Resource("W3Schools", "w3schools.com", "https://www.w3schools.com/",
+				"Lorem ipsum dolor sit amet,"
+						+ " consectetur adipisicing elit. Nisi, ipsum ad laudantium, earum est at corporis fugit mollitia"
+						+ " quo minima quasi fuga quia cupiditate repudiandae doloribus perspiciatis illum officiis. Animi?");
+		Resource resource3 = new Resource("TutorialsPoint", "tutorialspoint.com",
+				"https://www.tutorialspoint.com/index.htm",
+				"Lorem ipsum dolor sit amet,"
+						+ " consectetur adipisicing elit. Nisi, ipsum ad laudantium, earum est at corporis fugit mollitia"
+						+ " quo minima quasi fuga quia cupiditate repudiandae doloribus perspiciatis illum officiis. Animi?");
+		Resource resource4 = new Resource("EggHead", "egghead.io", "https://egghead.io/", "Lorem ipsum dolor sit amet,"
+				+ " consectetur adipisicing elit. Nisi, ipsum ad laudantium, earum est at corporis fugit mollitia"
+				+ " quo minima quasi fuga quia cupiditate repudiandae doloribus perspiciatis illum officiis. Animi?");
+
+		this.resourceService.insert(resource1);
+		this.resourceService.insert(resource2);
+		this.resourceService.insert(resource3);
+		this.resourceService.insert(resource4);
+	}
+
 	private void createAndPersistEventsAndChallenges() {
 		List<EventType> eventTypes = this.eventTypeService.findAll();
 		List<Technology> technologies = this.technologyService.findAll();
-		List<SkillLevel> skillLevels = this.skillLevel.findAll();
+		List<SkillLevel> skillLevels = this.skillLevelService.findAll();
+		List<Resource> resources = this.resourceService.findAll();
 
-		Challenge challenge1 = new Challenge("Addition", "Code 2 + 2", this.getRnFromList(skillLevels));
+		Challenge challenge1 = new Challenge("Addition",
+				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
+						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
+						+ "voluptatibus!",
+				this.getRnFromList(skillLevels));
 		challenge1.setTags("Programming", "Addition", "Math", "Algebra");
 		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
-		Challenge challenge2 = new Challenge("Substraction", "Code 2 - 2", this.getRnFromList(skillLevels));
+		challenge1.setResources(this.getRnFromList(resources), this.getRnFromList(resources),
+				this.getRnFromList(resources));
+		Challenge challenge2 = new Challenge("Substraction",
+				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
+						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
+						+ "voluptatibus!",
+				this.getRnFromList(skillLevels));
 		challenge2.setTags("Substraction", "Math");
 		challenge2.setTechnologies(this.getRnFromList(technologies));
-		Challenge challenge3 = new Challenge("Multiply", "Code 2 * 2", this.getRnFromList(skillLevels));
+		challenge2.setResources(this.getRnFromList(resources), this.getRnFromList(resources));
+		Challenge challenge3 = new Challenge("Multiply",
+				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
+						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
+						+ "voluptatibus!",
+				this.getRnFromList(skillLevels));
 		challenge3.setTags("Programming", "Multiply", "Math", "Algebra");
 		challenge3.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
-		Challenge challenge4 = new Challenge("Divide", "Code 2 / 2", this.getRnFromList(skillLevels));
+		challenge3.setResources(this.getRnFromList(resources), this.getRnFromList(resources),
+				this.getRnFromList(resources));
+		Challenge challenge4 = new Challenge("Divide",
+				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
+						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
+						+ "voluptatibus!",
+				this.getRnFromList(skillLevels));
 		challenge4.setTags("Programming", "Divide", "Math");
 		challenge4.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies));
-		Challenge challenge5 = new Challenge("Simple calculator", "Code a simple calculator",
+		challenge4.setResources(this.getRnFromList(resources), this.getRnFromList(resources),
+				this.getRnFromList(resources));
+		Challenge challenge5 = new Challenge("Simple calculator",
+				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
+						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
+						+ "voluptatibus!",
 				this.getRnFromList(skillLevels));
 		challenge5.setTags("Programming", "Addition", "Substraction", "Code", "Math", "Algebra");
 		challenge5.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies), this.getRnFromList(technologies));
-		Challenge challenge6 = new Challenge("Complex calculator", "Code a complex calculator",
+		challenge5.setResources(this.getRnFromList(resources));
+		Challenge challenge6 = new Challenge("Complex calculator",
+				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
+						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
+						+ "voluptatibus!",
 				this.getRnFromList(skillLevels));
 		challenge6.setTags("Math", "Algebra");
 		challenge6.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
-		Challenge challenge7 = new Challenge("Simply code", "Code somehting", this.getRnFromList(skillLevels));
+		challenge6.setResources(this.getRnFromList(resources), this.getRnFromList(resources),
+				this.getRnFromList(resources));
+		Challenge challenge7 = new Challenge("Simply code",
+				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
+						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
+						+ "voluptatibus!",
+				this.getRnFromList(skillLevels));
 		challenge7.setTags("Programming", "Code");
 		challenge7.setTechnologies(this.getRnFromList(technologies));
+		challenge7.setResources(this.getRnFromList(resources), this.getRnFromList(resources));
 
-		Event event1 = new Event("Event A",
+		Event event1 = new Event("Programming Marathon",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
@@ -205,7 +272,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		event1.setTags("Programming", "Begginer", "Math");
 		event1.addChallenge(challenge1);
 		event1.addChallenge(challenge2);
-		Event event2 = new Event("Event B",
+		Event event2 = new Event("Programmers Week",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
@@ -214,14 +281,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		event2.addChallenge(challenge3);
 		event2.addChallenge(challenge4);
 		event2.addChallenge(challenge5);
-		Event event3 = new Event("Event C",
+		Event event3 = new Event("Just Code It",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
 				toDate("15-10-2019"), toDate("25-11-2019"), this.getRnFromList(eventTypes));
 		event3.setTags("Programming", "Java", "Algorithms");
 		event3.addChallenge(challenge6);
-		Event event4 = new Event("Event D",
+		Event event4 = new Event("Love IT or Leave IT",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",

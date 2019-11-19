@@ -1,5 +1,7 @@
 import { EnumObject } from './enum-object.model';
 import { Event } from './event.model';
+import { Solution } from './solution.model';
+import { Resource } from './resource.model';
 
 export interface Challenge {
     id: number;
@@ -9,5 +11,7 @@ export interface Challenge {
     technologies: EnumObject[];
     skillLevel: EnumObject;
     event: Event;
+    solutions: Solution[];
+    resources: Resource[];
     tags: string[];
 }

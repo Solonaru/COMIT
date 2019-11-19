@@ -1,5 +1,6 @@
 <form class="filter">
-    <p class="filter__title">Filter by</p>
+    <h3 class="filter__title" *ngIf="filterTitle">{{ filterTitle }}</h3>
+    <p class="filter__label">Filter by</p>
     <app-filter-field
         *ngFor="let filterField of filterFields; let i = index"
         [filterField]="filterField"
