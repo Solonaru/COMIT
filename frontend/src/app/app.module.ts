@@ -46,7 +46,6 @@ import { DatePipe } from '@angular/common';
 import { ChallengeListComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-list.component';
 import { ChallengeItemComponent } from './views/user-side/event-feature/challenges/challenge-list/challenge-item/challenge-item.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -2,12 +2,12 @@
 <form action="#" class="manager-form">
     <select name="" id="" class="manager-form__select">
         <option value="-1" selected disabled>Select an event</option>
-        <option value="1">Event 1</option>
-        <option value="2">Event 2</option>
+        <option value="" *ngFor="let event of events" (click)="onSelect(event)">{{ event.name }}</option>
     </select>
 </form>
 <div class="events-manager__btn-container">
-    <a href="#" class="table__action table__action--add"><i class="fa fa-plus-circle table__icon" aria-hidden="true"></i></a>
+    <a href="#" class="table__action table__action--add"><i class="fa fa-plus-circle table__icon"
+            aria-hidden="true"></i></a>
 </div>
 <table class="table">
     <thead>
@@ -19,32 +19,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th>1</th>
-            <td>Challenge 1</td>
-            <td> {{ limitLength('
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsam nulla maxime ex qui ratione repudiandae quaerat dolore cupiditate ea quam veniam soluta similique rerum quia, cumque dicta nesciunt. Earum?') }} </td>
+        <tr *ngFor="let challenge of challenges; let i = index">
+            <th>{{ i + 1 }}</th>
+            <td>{{ challenge.title }}</td>
+            <td> {{ limitLength(challenge.content) }} </td>
             <td>
-                <a href="#" class="table__action table__action--update"><i class="fa fa-pencil-square-o table__icon" aria-hidden="true"></i></a>
-                <a href="#" class="table__action table__action--delete"><i class="fa fa-trash table__icon" aria-hidden="true"></i></a>
-            </td>
-        </tr>
-        <tr>
-            <th>2</th>
-            <td>Challenge 2</td>
-            <td>Text 2</td>
-            <td>
-                <a href="#" class="table__action table__action--update"><i class="fa fa-pencil-square-o table__icon" aria-hidden="true"></i></a>
-                <a href="#" class="table__action table__action--delete"><i class="fa fa-trash table__icon" aria-hidden="true"></i></a>
-            </td>
-        </tr>
-        <tr>
-            <th>3</th>
-            <td>Challenge 3</td>
-            <td>Text 3</td>
-            <td>
-                <a href="#" class="table__action table__action--update"><i class="fa fa-pencil-square-o table__icon" aria-hidden="true"></i></a>
-                <a href="#" class="table__action table__action--delete"><i class="fa fa-trash table__icon" aria-hidden="true"></i></a>
+                <a href="#" class="table__action table__action--update"><i class="fa fa-pencil-square-o table__icon"
+                        aria-hidden="true"></i></a>
+                <a href="#" class="table__action table__action--delete"><i class="fa fa-trash table__icon"
+                        aria-hidden="true"></i></a>
             </td>
         </tr>
     </tbody>
