@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --main-color: #0d3980;
+}
 
 app-root {
     min-height: 100vh;
@@ -11,7 +14,7 @@ app-root {
 }
 
 i {
-    color: #0d3980;
+    color: var(--main-color);
 }
 
 body {
@@ -25,8 +28,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .general-button {
     display: inline-block;
-    background-color: #0d3980;
-    border: 1px solid #0d3980;
+    background-color: var(--main-color);;
+    border: 1px solid var(--main-color);;
     padding: 10px 40px;
     border-radius: 5px;
     color: #fff;
@@ -38,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 .general-button:hover {
     text-decoration: none;
     background-color: #fff;
-    color: #0d3980;
+    color: var(--main-color);;
 }
 
 .general__overlay {
@@ -107,7 +110,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .manager-form__select {
     border-radius: 5px;
-    border: 1px solid #0d3980;
+    border: 1px solid var(--main-color);;
     padding: 5px 10px;
 }
 
@@ -127,7 +130,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .modal-form__input {
     width: 100%;
-    color: #0d3980;
+    color: var(--main-color);;
     margin-bottom: 15px;
     border: 1px solid;
     padding: 5px 15px;
