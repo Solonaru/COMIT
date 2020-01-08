@@ -1,51 +1,45 @@
-<div class="section-title text-center p-5">
-  <h2>
-    Got a question? We'd love to hear from you.
-  </h2>
-  <h2>
-    Send us a message and we'll respond as soon as possible
-  </h2>
-</div>
-<div class="form-container text-center">
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-    <label for="fullName">
-      Name*
-    </label>
-    <input
-      class="input"
-      type="text"
-      name="fullName"
-      placeholder="Your full name"
-      formControlName="fullName"
-      required
-    />
-    <br />
-    <label for="email">
-      Email Address*
-    </label>
-    <input
-      class="input"
-      type="email"
-      name="email"
-      placeholder="Your email"
-      formControlName="email"
-      required
-    />
-    <br />
-    <label for="message">
-      Message*
-    </label>
-    <textarea
-      name="message"
-      placeholder="Your message"
-      formControlName="message"
-      required
-    ></textarea>
-    <br />
-    <input 
-      class="btn btn-primary mt-4"
-      type="submit" 
-      value="Send Message" 
-    />
-  </form>
+<div class="contact">
+	<div class="section-title text-center py-5">
+		<h2 class="contact__title">Got a question? We'd love to hear from you.</h2>
+		<h2 class="contact__title">Send us a message and we'll respond as soon as possible</h2>
+	</div>
+	<div class="form-container text-center">
+		<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+			<div class="contact-form__box">
+				<input
+					class="form-control contact-form__input"
+					type="text"
+					name="fullName"
+					placeholder="Name*"
+					formControlName="fullName"
+					required
+				/>
+			</div>
+			<div class="contact-form__box">
+				<input
+					class="form-control contact-form__input"
+					type="email"
+					name="email"
+					placeholder="Email address*"
+					formControlName="email"
+					required
+				/>
+			</div>
+			<div class="contact-form__box">
+				<textarea
+					class="form-control contact-form__input"
+					name="message"
+					placeholder="Message*"
+					formControlName="message"
+					required
+				></textarea>
+			</div>
+			<div class="contact-form__box">
+				<button 
+					class="btn btn-primary btn-block mt-2"
+					type="submit"> Send Message
+				</button>
+			</div>
+		</form>
+	</div>
 </div>

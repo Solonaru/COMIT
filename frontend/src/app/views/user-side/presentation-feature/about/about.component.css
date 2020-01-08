@@ -1,6 +1,6 @@
 .about-us {
     background-size: cover;
-    background-position: center;
+    background-position: left;
     min-height: calc(100vh - 79px - 138px);
     position: relative;
     padding: 25px 15px;
@@ -16,7 +16,7 @@
     background-color: rgba(13,57,128, .7);
 }
 
-.about-us__text  {
+.about-us__text {
     max-width: 1000px;
     color: #fff;
     font-size: 18px;
