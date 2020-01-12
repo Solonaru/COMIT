@@ -77,21 +77,15 @@ export class EventManagerComponent implements OnInit, OnDestroy {
   }
 
   private add_event(): void {
-    this.eventService.addEvent(this.event).subscribe(resp => {
-      console.log("Event successfully added");
-    });
+    this.eventService.addEvent(this.event).subscribe();
   }
 
   private update_event(): void {
-    this.eventService.updateEvent(this.event).subscribe(resp => {
-      console.log("Event successfully update");
-    });
+    this.eventService.updateEvent(this.event).subscribe();
   }
 
   private delete_event(): void {
-    this.eventService.deleteEvent(this.event).subscribe(resp => {
-      console.log("Event successfully deleted");
-    });
+    this.eventService.deleteEvent(this.event).subscribe();
   }
 
 }

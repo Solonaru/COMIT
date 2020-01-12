@@ -52,5 +52,11 @@ public class EventController implements IEntityController<Event, Long> {
 	public void delete(@PathVariable("eventId") Long eventId) {
 		eventService.deleteById(eventId);
 	}
+	
+	@PreAuthorize("hasRole('ROLE_USER')")
+	@RequestMapping(value = "/all/count", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public long getCount() {
+		return eventService.getCount();
+	}
 
 }

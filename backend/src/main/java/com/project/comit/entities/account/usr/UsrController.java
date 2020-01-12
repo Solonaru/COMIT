@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,6 +46,12 @@ public class UsrController implements IEntityController<Usr, Long> {
 	@RequestMapping(value = "/delete/{usrId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void delete(@PathVariable("usrId") Long usrId) {
 		usrService.deleteById(usrId);
+	}
+	
+	@PreAuthorize("hasRole('ROLE_USER')")
+	@RequestMapping(value = "/all/count", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public long getCount() {
+		return usrService.getCount();
 	}
 
 }

@@ -31,5 +31,9 @@ public class EventService implements IEventService {
 	public void deleteById(Long eventId) {
 		eventRepository.deleteById(eventId);
 	}
+	
+	public long getCount() {
+		return this.eventRepository.count();
+	}
 
 }

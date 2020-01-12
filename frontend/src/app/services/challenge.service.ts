@@ -16,7 +16,7 @@ export class ChallengeService {
         private http: HttpClient,
         private enumObjectService: EnumObjectService) { }
 
-    getChallengeById(id: number) : Observable<Challenge> {
+    getChallengeById(id: number): Observable<Challenge> {
         return this.fetchChallengeById(id);
     }
 

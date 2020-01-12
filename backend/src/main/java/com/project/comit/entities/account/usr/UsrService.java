@@ -31,5 +31,9 @@ public class UsrService implements IUsrService {
 	public void deleteById(Long usrId) {
 		usrRepository.deleteById(usrId);
 	}
+	
+	public long getCount() {
+		return this.usrRepository.count();
+	}
 
 }

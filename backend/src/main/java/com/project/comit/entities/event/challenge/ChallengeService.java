@@ -37,5 +37,9 @@ public class ChallengeService implements IChallengeService {
 	public void deleteById(Long challengeId) {
 		challengeRepository.deleteById(challengeId);
 	}
+	
+	public long getCount() {
+		return this.challengeRepository.count();
+	}
 
 }

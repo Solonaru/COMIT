@@ -37,7 +37,7 @@ public class ChallengeController implements IEntityController<Challenge, Long> {
 	public List<Challenge> getAll() {
 		return challengeService.findAll();
 	}
-	
+
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@RequestMapping(value = "/all/{eventId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Challenge> getAllByEventId(@PathVariable("eventId") Long eventId) {
@@ -58,4 +58,11 @@ public class ChallengeController implements IEntityController<Challenge, Long> {
 	public void delete(@PathVariable("challengeId") Long challengeId) {
 		challengeService.deleteById(challengeId);
 	}
+
+	@PreAuthorize("hasRole('ROLE_USER')")
+	@RequestMapping(value = "/all/count", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public long getCount() {
+		return challengeService.getCount();
+	}
+
 }
