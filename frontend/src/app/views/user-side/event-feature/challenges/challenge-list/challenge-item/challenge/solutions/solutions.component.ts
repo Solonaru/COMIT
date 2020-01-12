@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Params, ActivatedRoute } from '@angular/router';
+import { Challenge } from 'src/app/models/challenge.model';
+import { ChallengeService } from 'src/app/services/challenge.service';
 
 @Component({
   selector: 'app-solutions',
@@ -6,10 +9,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./solutions.component.css']
 })
 export class SolutionsComponent implements OnInit {
+  challenge: Challenge;
+  modal: Boolean = false;
+  show: Boolean = false;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private challengeService: ChallengeService) { }
 
   ngOnInit() {
+    this.route.parent.params
+      .subscribe(
+        (params: Params) => {
+          this.challengeService.getChallengeById(+params['id']).subscribe(data => {
+            this.challenge = data;
+            console.log(this.challenge.solutions)
+          });
+        }
+      );
   }
 
+  toggleModal() {
+    this.modal = !this.modal;
+  }
+
+  showSolutions() {
+    this.show = !this.show;
+    this.toggleModal();
+  }
 }

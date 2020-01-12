@@ -1,6 +1,33 @@
 <div class="solutions">
-    <div class="general__overlay solutions__overlay">
+    <div class="general__overlay solutions__overlay" (click)="toggleModal()" *ngIf="!show">
         <img src="./../../../assets/images/lock.png" alt="interrogation" class="general__overlay-image tip__overlay-image">
         <p class="general__overlay-text solutions__overlay-text">Unlock Solutions</p>
+    </div>
+    <div class="solutions-list" *ngIf="challenge && challenge.solutions.length > 0">
+        <div class="solution" *ngFor="let solution of challenge.solutions; let i = index">
+            <h3 class="solution__title">Solution {{ i + 1 }}</h3>
+            <h4 class="solution__heading"><span class="solution__text">Author: </span> {{ solution.account.name }}  {{ solution.account.surname }} </h4>
+            <h4 class="solution__heading"><span class="solution__text">Type: </span> {{ solution.solutionType }} </h4>
+            <div class="solution__content"> {{ solution.content }} </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': modal}">
+        <div class="modal-overlay"></div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Unlock Solutions?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        (click)="toggleModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="showSolutions()">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        (click)="toggleModal()">No</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

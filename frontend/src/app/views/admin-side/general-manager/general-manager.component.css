@@ -34,3 +34,55 @@
     padding: 20px;
     overflow: auto;
 }
+
+@media (max-width: 767.98px) {
+    .manager {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .tabs {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+    }
+    
+    table thead {
+        border: none;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+    }
+    
+    table tr {
+        display: block;
+        margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      text-align: right;
+    }
+
+    .table td, .table th {
+        border-top: none;
+    }
+    
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+    
+    table td:last-child {
+        border-bottom: 0;
+    }
+}

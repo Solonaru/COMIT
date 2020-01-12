@@ -8,7 +8,7 @@ import { Event } from 'src/app/models/event.model';
 @Component({
   selector: 'app-challenge-manager',
   templateUrl: './challenge-manager.component.html',
-  styleUrls: ['./challenge-manager.component.css']
+  styleUrls: ['./challenge-manager.component.css', './../general-manager.component.css']
 })
 export class ChallengeManagerComponent implements OnInit, OnDestroy {
 

@@ -15,11 +15,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let event of events; let i = index">
-            <th>{{ i + 1 }}</th>
-            <td>{{ event.name }}</td>
-            <td>{{ event.startDate }}</td>
-            <td>{{ event.endDate }}</td>
-            <td>
+            <td data-label="Number">{{ i + 1 }}</td>
+            <td data-label="Name">{{ event.name }}</td>
+            <td data-label="Start Date">{{ event.startDate }}</td>
+            <td data-label="End Date">{{ event.endDate }}</td>
+            <td data-label="Action">
                 <a href="#" class="table__action table__action--update"><i class="fa fa-pencil-square-o table__icon"
                         aria-hidden="true"></i></a>
                 <a href="#" (click)="toggleModal($event, 'delete')" class="table__action table__action--delete"><i

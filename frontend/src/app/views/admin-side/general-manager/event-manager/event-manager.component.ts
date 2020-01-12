@@ -6,7 +6,7 @@ import { EventService } from 'src/app/services/event.service';
 @Component({
   selector: 'app-event-manager',
   templateUrl: './event-manager.component.html',
-  styleUrls: ['./event-manager.component.css']
+  styleUrls: ['./event-manager.component.css', './../general-manager.component.css']
 })
 export class EventManagerComponent implements OnInit, OnDestroy {
   modal: Boolean = false;

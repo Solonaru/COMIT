@@ -52,6 +52,7 @@
     font-size: 20px;
     text-decoration: none;
     color: #0d3980;
+    cursor: pointer;
 }
 
 .menu__link:hover, .menu__link:focus, .menu-sub__link:hover, .menu-sub__link:focus, .user__link:hover, .user__link:focus {

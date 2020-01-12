@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-solution-manager',
   templateUrl: './solution-manager.component.html',
-  styleUrls: ['./solution-manager.component.css']
+  styleUrls: ['./solution-manager.component.css', './../general-manager.component.css']
 })
 export class SolutionManagerComponent implements OnInit {
 

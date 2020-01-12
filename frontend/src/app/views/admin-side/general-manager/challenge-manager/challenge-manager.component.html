@@ -20,10 +20,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let challenge of challenges; let i = index">
-            <th>{{ i + 1 }}</th>
-            <td>{{ challenge.title }}</td>
-            <td> {{ limitLength(challenge.content) }} </td>
-            <td>
+            <td data-label="Number">{{ i + 1 }}</td>
+            <td data-label="Name">{{ challenge.title }}</td>
+            <td data-label="Text"> {{ limitLength(challenge.content) }} </td>
+            <td data-label="Action">
                 <a href="#" class="table__action table__action--update"><i class="fa fa-pencil-square-o table__icon"
                         aria-hidden="true"></i></a>
                 <a href="#" class="table__action table__action--delete"><i class="fa fa-trash table__icon"
