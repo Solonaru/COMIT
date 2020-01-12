@@ -16,11 +16,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.project.comit.entities.account.personaldata.PersonalData;
 import com.project.comit.entities.event.challenge.solution.Solution;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonDeserialize(using = AccountDeserializer.class)
 public abstract class Account {
 
 	@Id
@@ -31,41 +33,48 @@ public abstract class Account {
 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "personal_data")
-	private PersonalData personalData;
+	protected PersonalData personalData;
 
 	@JsonIgnoreProperties(value = "account")
 	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Solution> solutions;
+	protected List<Solution> solutions;
+
+	protected String type;
 
 	/* ----- CONSTRUCTORS ----- */
 	protected Account() {
 		super();
 	}
 
-	protected Account(String name, String surname) {
+	protected Account(String name, String surname, String type) {
 		super();
 		this.personalData = new PersonalData(name, surname);
+		this.type = type;
 	}
 
 	/* ----- GETTERS & SETTERS ----- */
 	public Long getId() {
 		return id;
 	}
+	
+	public PersonalData getPersonalData() {
+		return personalData;
+	}
 
 	public String getName() {
-		return this.personalData.getName();
+		return this.getPersonalData().getName();
 	}
 
 	public void setName(String name) {
-		this.personalData.setName(name);
+		this.getPersonalData().setName(name);
 	}
 
 	public String getSurname() {
-		return this.personalData.getSurname();
+		return this.getPersonalData().getSurname();
 	}
 
 	public void setSurname(String surname) {
-		this.personalData.setSurname(surname);
+		this.getPersonalData().setSurname(surname);
 	}
 
 	public List<Solution> getSolutions() {
@@ -74,6 +83,14 @@ public abstract class Account {
 
 	public void setSolutions(List<Solution> solutions) {
 		this.solutions = solutions;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

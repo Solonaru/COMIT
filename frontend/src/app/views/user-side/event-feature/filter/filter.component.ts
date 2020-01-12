@@ -6,8 +6,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
-  eventTypes: string[];
-  technologies: string[];
   @Input() filterFields: string[];
   @Input() filterTitle: string;
 

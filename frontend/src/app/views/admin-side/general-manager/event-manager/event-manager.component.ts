@@ -10,8 +10,9 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class EventManagerComponent implements OnInit, OnDestroy {
   modal: Boolean = false;
-  selectedAction: String = '';
+  selectedAction: String = 'add';
 
+  event: Event = null;
   events: Event[] = [];
   subscriptions: Subscription[] = [];
 
@@ -28,17 +29,69 @@ export class EventManagerComponent implements OnInit, OnDestroy {
     this.eventService.getEvents();
   }
 
-  toggleModal(e, action) {
+  toggleModal(e, action?: string, event?: Event) {
     e.preventDefault();
     this.modal = !this.modal;
 
-    if (action) this.selectedAction = action;
+    if (action) {
+      this.selectedAction = action;
+
+      if ('add' === action) {
+        this.event = new Event();
+      }
+
+      if (event) {
+        this.event = event;
+      } else {
+        this.process_event(action);
+      }
+    } else {
+      this.event = null;
+    }
+
   }
 
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => {
       subscription.unsubscribe();
     })
+  }
+
+  private process_event(action: string): void {
+
+    switch (action) {
+      case 'add_confirm': {
+        this.add_event();
+        break;
+      }
+      case 'update_confirm': {
+        this.update_event();
+        break;
+      }
+      case 'delete_confirm': {
+        this.delete_event();
+        break;
+      }
+    }
+
+  }
+
+  private add_event(): void {
+    this.eventService.addEvent(this.event).subscribe(resp => {
+      console.log("Event successfully added");
+    });
+  }
+
+  private update_event(): void {
+    this.eventService.updateEvent(this.event).subscribe(resp => {
+      console.log("Event successfully update");
+    });
+  }
+
+  private delete_event(): void {
+    this.eventService.deleteEvent(this.event).subscribe(resp => {
+      console.log("Event successfully deleted");
+    });
   }
 
 }

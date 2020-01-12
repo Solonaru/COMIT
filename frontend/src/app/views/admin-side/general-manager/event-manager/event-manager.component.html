@@ -20,10 +20,12 @@
             <td data-label="Start Date">{{ event.startDate }}</td>
             <td data-label="End Date">{{ event.endDate }}</td>
             <td data-label="Action">
-                <a href="#" class="table__action table__action--update"><i class="fa fa-pencil-square-o table__icon"
+                <a href="#" (click)="toggleModal($event, 'update', event)"
+                    class="table__action table__action--update"><i class="fa fa-pencil-square-o table__icon"
                         aria-hidden="true"></i></a>
-                <a href="#" (click)="toggleModal($event, 'delete')" class="table__action table__action--delete"><i
-                        class="fa fa-trash table__icon" aria-hidden="true"></i></a>
+                <a href="#" (click)="toggleModal($event, 'delete', event)"
+                    class="table__action table__action--delete"><i class="fa fa-trash table__icon"
+                        aria-hidden="true"></i></a>
             </td>
         </tr>
     </tbody>
@@ -34,7 +36,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">{{ selectedAction[0].toUpperCase() + selectedAction.slice(1) + " form" }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                     (click)="toggleModal($event)">
                     <span aria-hidden="true">&times;</span>
@@ -42,26 +44,50 @@
             </div>
             <div class="modal-body">
                 <p *ngIf="selectedAction == 'delete'">Are you sure?</p>
-                <form action="" class="modal-form" *ngIf="selectedAction == 'add'">
+                <form action="" class="modal-form" *ngIf="selectedAction == 'add' && event">
                     <div class="row">
                         <div class="col-12">
-                            <input type="text" class="modal-form__input" placeholder="Name">
+                            <input type="text" name="name" class="modal-form__input" placeholder="Name"
+                                [(ngModel)]="event.name">
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" class="modal-form__input" placeholder="Start Date">
+                            <input type="text" name="start_date" class="modal-form__input" placeholder="Start Date"
+                                [(ngModel)]="event.startDate">
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" class="modal-form__input" placeholder="End Date">
+                            <input type="text" name="end_date" class="modal-form__input" placeholder="End Date"
+                                [(ngModel)]="event.endDate">
                         </div>
                         <div class="col-12">
-                            <textarea name="" id="" cols="30" rows="10" class="modal-form__input"
-                                placeholder="Description"></textarea>
+                            <textarea name="description" id="" cols="30" rows="10" class="modal-form__input"
+                                placeholder="Description" [(ngModel)]="event.description"></textarea>
+                        </div>
+                    </div>
+                </form>
+                <form action="" class="modal-form" *ngIf="selectedAction == 'update' && event">
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" name="name" class="modal-form__input" placeholder="Name"
+                                [(ngModel)]="event.name">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="start_date" class="modal-form__input" placeholder="Start Date"
+                                [(ngModel)]="event.startDate">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="end_date" class="modal-form__input" placeholder="End Date"
+                                [(ngModel)]="event.endDate">
+                        </div>
+                        <div class="col-12">
+                            <textarea name="description" id="" cols="30" rows="10" class="modal-form__input"
+                                placeholder="Description" [(ngModel)]="event.description"></textarea>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary"
+                    (click)="toggleModal($event, selectedAction + '_confirm')">Confirm</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
                     (click)="toggleModal($event)">Close</button>
             </div>

@@ -1,6 +1,6 @@
 import { EnumObject } from './enum-object.model';
 
-export interface Event {
+export class Event {
     id: number;
     name: string;
     description: string;
