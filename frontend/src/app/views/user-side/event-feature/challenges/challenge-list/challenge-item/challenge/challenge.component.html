@@ -1,5 +1,5 @@
 <div class="challenge-page">
-    <h1 class="challenge-page__title">Return the First Element in an Array</h1>
+    <h1 class="challenge-page__title" *ngIf="challenge && challenge.title" > {{ challenge.title }} </h1>
 
     <div class="row">
         <div class="col-12 col-md-7 col-lg-9">
@@ -14,12 +14,45 @@
             </div>
         </div>
         <div class="col-12 col-md-5 col-lg-3">
-            <div class="tip">
-                <div class="general__overlay tip__overlay">
-                    <img src="./../../assets/images/interrogation.png" alt="interrogation" class="general__overlay-image tip__overlay-image">
-                    <p class="general__overlay-text tip__overlay-text">Unlock Tips</p>
+            <div class="tips">
+                <div class="general__overlay tips__overlay" (click)="toggleModal()" *ngIf="!show">
+                    <img src="./../../assets/images/interrogation.png" alt="interrogation" class="general__overlay-image tips__overlay-image">
+                    <p class="general__overlay-text tips__overlay-text">Unlock Tips</p>
                 </div>
-                <div class="tip__content"></div>
+                <div class="tips__content">
+                    <h2 class="tips__title">Tips and Tricks</h2>
+                    <div class="tip">
+                        <span class="tip__number">1</span>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, neque! Dolorum provide.
+                    </div>
+                    <div class="tip">
+                        <span class="tip__number">2</span>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, neque! Dolorum provide.
+                    </div>
+                    <div class="tip">
+                        <span class="tip__number">3</span>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, neque! Dolorum provide.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': modal}">
+            <div class="modal-overlay"></div>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Unlock Tips?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            (click)="toggleModal()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" (click)="showTips()">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            (click)="toggleModal()">No</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

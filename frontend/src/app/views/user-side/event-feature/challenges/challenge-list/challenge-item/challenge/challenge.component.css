@@ -8,7 +8,7 @@
     margin-bottom: 60px;
 }
 
-.challenge-single, .tip {
+.challenge-single, .tips {
     border: 1px solid #0d3980;
     border-radius: 5px;
     padding: 20px;
@@ -45,7 +45,39 @@
     background-color: #fff;
 }
 
-.tip {
+.tips {
     position: relative;
     color: #0d3980;
+}
+
+.tips__title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tip:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.tip__number {
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+    .challenge-page {
+        padding: 20px 15px;
+    }
+    .challenge-page__title {
+        font-size: 30px;
+    }
+    .challenge-single__tabs {
+        left: 0;
+    }
+    .challenge-single, .tips {
+        padding: 20px 15px;
+    }
+    .challenge-single__tab, .challenge-single__tab:link, .challenge-single__tab:active {
+        padding: 3px 5px;
+    }
 }
