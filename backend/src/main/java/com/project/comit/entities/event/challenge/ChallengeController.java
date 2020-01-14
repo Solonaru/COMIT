@@ -44,22 +44,25 @@ public class ChallengeController implements IEntityController<Challenge, Long> {
 		return challengeService.findAllByEvent(this.eventService.findById(eventId).get());
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void insert(@RequestBody Challenge challenge) {
 		challengeService.insert(challenge);
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void update(@RequestBody Challenge challenge) {
 		challengeService.update(challenge);
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/delete/{challengeId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void delete(@PathVariable("challengeId") Long challengeId) {
 		challengeService.deleteById(challengeId);
 	}
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/all/count", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public long getCount() {
 		return challengeService.getCount();

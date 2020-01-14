@@ -1,6 +1,6 @@
 <div class="code">
-    <textarea name="" id="" cols="30" rows="10" class="code__textarea"></textarea>
+    <textarea name="" id="" cols="30" rows="10" class="code__textarea" [(ngModel)]="content"></textarea>
     <div class="code__button-container">
-        <button type="submit" class="general-button code__button">Submit</button>
+        <button type="submit" class="general-button code__button" (click)="onSubmit()">Submit</button>
     </div>
 </div>

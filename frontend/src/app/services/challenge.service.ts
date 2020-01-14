@@ -14,11 +14,20 @@ export class ChallengeService {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
+    private challenge: Challenge;
     private challenges: Challenge[] = [];
 
     constructor(
         private http: HttpClient,
         private enumObjectService: EnumObjectService) { }
+
+    getChallenge(): Challenge {
+        return this.challenge;
+    }
+
+    setChallenge(challenge: Challenge): void {
+        this.challenge = challenge;
+    }
 
     getChallengeById(id: number): Observable<Challenge> {
         return this.fetchChallengeById(id);

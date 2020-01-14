@@ -1,7 +1,7 @@
 import { Challenge } from './challenge.model';
 import { SolutionType } from './enums/solution-type.enum';
 
-export interface Solution {
+export class Solution {
     id: number;
     content: string;
     challenge: Challenge;

@@ -13,18 +13,21 @@ export class ChallengeComponent implements OnInit {
   challenge: Challenge;
   modal: Boolean = false;
   show: Boolean = false;
-  
-  constructor(private route: ActivatedRoute, private challengeService: ChallengeService) { }
+
+  constructor(
+    private route: ActivatedRoute,
+    private challengeService: ChallengeService) { }
 
   ngOnInit() {
     this.route.params
-    .subscribe(
-      (params: Params) => {
-        this.challengeService.getChallengeById(+params['id']).subscribe(data => {
-          this.challenge = data;
-        });
-      }
-    );
+      .subscribe(
+        (params: Params) => {
+          this.challengeService.getChallengeById(+params['id']).subscribe(data => {
+            this.challengeService.setChallenge(data);
+            this.challenge = data;
+          });
+        }
+      );
   }
 
   toggleModal() {

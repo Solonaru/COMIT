@@ -19,7 +19,7 @@
                     <img src="./../../assets/images/interrogation.png" alt="interrogation" class="general__overlay-image tips__overlay-image">
                     <p class="general__overlay-text tips__overlay-text">Unlock Tips</p>
                 </div>
-                <div class="tips__content">
+                <div class="tips__content" *ngIf="challenge">
                     <h2 class="tips__title">Tips and Tricks</h2>
                     <div class="tip" *ngFor="let tip of challenge.tips; let i = index">
                         <span class="tip__number">{{ i + 1 }}</span>

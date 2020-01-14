@@ -31,5 +31,9 @@ public class AccountService implements IAccountService {
 	public void deleteById(Long accountId) {
 		accountRepository.deleteById(accountId);
 	}
+	
+	public Account findByPersonalData_Name(String name) {
+		return accountRepository.findByPersonalData_Name(name);
+	}
 
 }
