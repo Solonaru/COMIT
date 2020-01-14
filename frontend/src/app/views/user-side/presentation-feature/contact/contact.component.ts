@@ -9,9 +9,13 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class ContactComponent implements OnInit {
 
   contactForm: FormGroup;
-  
-  constructor(private formBuilder: FormBuilder) {
+
+  constructor(private formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.createContactForm();
   }
+
   createContactForm() {
     this.contactForm = this.formBuilder.group({
       fullName: [''],
@@ -19,11 +23,9 @@ export class ContactComponent implements OnInit {
       message: ['']
     });
   }
+
   onSubmit() {
-    console.log('Your form data : ', this.contactForm.value );
-  }
-  ngOnInit() {
-    this.createContactForm();
+    console.log('Your form data : ', this.contactForm.value);
   }
 
 }

@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { Challenge } from '../models/challenge.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EnumObjectService } from './enum-object.service';
-import { take, tap } from 'rxjs/operators';
+import { take, tap, map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ChallengeService {
     challengesChanged = new Subject<Challenge[]>();
 
     private challengeUrl = 'http://localhost:8080/challenge';
+    private httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
     private challenges: Challenge[] = [];
 
     constructor(
@@ -21,15 +25,35 @@ export class ChallengeService {
     }
 
     getChallenges(): void {
-        this.fetchChallenges().subscribe(challenges => {
-            console.log(challenges);
-        });
+        this.fetchChallenges().subscribe();
     }
 
     getChallengesByEventId(eventId: number) {
-        this.fetchChallengesByEventId(eventId).subscribe(challenges => {
-            console.log(challenges);
-        });
+        this.fetchChallengesByEventId(eventId).subscribe();
+    }
+
+    addChallenge(challenge: Challenge) {
+        return this.http.post<Event>(this.challengeUrl + '/add', JSON.stringify(challenge), this.httpOptions)
+            .pipe(map((resp: any) => {
+                this.fetchChallenges().subscribe();
+                return resp;
+            }));
+    }
+
+    updateChallenge(challenge: Challenge) {
+        return this.http.put<Event>(this.challengeUrl + '/update', JSON.stringify(challenge), this.httpOptions)
+            .pipe(map((resp: any) => {
+                this.fetchChallenges().subscribe();
+                return resp;
+            }));
+    }
+
+    deleteChallenge(challenge: Challenge) {
+        return this.http.delete(this.challengeUrl + '/delete/' + challenge.id, this.httpOptions)
+            .pipe(map((resp: any) => {
+                this.fetchChallenges().subscribe();
+                return resp;
+            }));
     }
 
     filterChallenges() {

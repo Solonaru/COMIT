@@ -46,7 +46,7 @@ public class Challenge {
 	private SkillLevel skillLevel;
 	@JsonIgnoreProperties(value = "challenges")
 	@ManyToOne
-	@JoinColumn(name = "building", updatable = false, nullable = false)
+	@JoinColumn(name = "event", updatable = false, nullable = false)
 	private Event event;
 	@JsonIgnoreProperties(value = "challenge")
 	@OneToMany(mappedBy = "challenge", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -3,7 +3,7 @@ import { Event } from './event.model';
 import { Solution } from './solution.model';
 import { Resource } from './resource.model';
 
-export interface Challenge {
+export class Challenge {
     id: number;
     title: string;
     content: string;

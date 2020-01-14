@@ -32,8 +32,6 @@ export class RegisterComponent implements OnInit {
             form.value.email,
             form.value.password);
 
-        console.log(this.signupInfo);
-
         this.authService.signUp(this.signupInfo).subscribe(
             data => { },
             error => {

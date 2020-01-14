@@ -146,6 +146,15 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 5px;
 }
 
+.modal-form__select {
+    width: 30%;
+    color: var(--main-color);;
+    margin-bottom: 15px;
+    border: 1px solid;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
 @media (min-width: 1199.98px) {
     .modal-dialog {
         max-width: 800px;

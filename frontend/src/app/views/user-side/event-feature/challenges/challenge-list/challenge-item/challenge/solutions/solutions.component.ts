@@ -23,7 +23,6 @@ export class SolutionsComponent implements OnInit {
         (params: Params) => {
           this.challengeService.getChallengeById(+params['id']).subscribe(data => {
             this.challenge = data;
-            console.log(this.challenge.solutions)
           });
         }
       );

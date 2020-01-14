@@ -11,12 +11,17 @@ import { Event } from 'src/app/models/event.model';
   styleUrls: ['./challenge-manager.component.css', './../general-manager.component.css']
 })
 export class ChallengeManagerComponent implements OnInit, OnDestroy {
+  modal: Boolean = false;
+  selectedAction: String = 'add';
 
+  challenge: Challenge = null;
   challenges: Challenge[] = [];
-  subscriptions: Subscription[] = [];
+
   events: { id: number, name: string }[] = [
     { id: -1, name: 'All' }
   ];
+
+  subscriptions: Subscription[] = [];
 
   constructor(
     private eventService: EventService,
@@ -57,10 +62,64 @@ export class ChallengeManagerComponent implements OnInit, OnDestroy {
     return string;
   }
 
+  toggleModal(e, action?: string, challenge?: Challenge) {
+    e.preventDefault();
+    this.modal = !this.modal;
+
+    if (action) {
+      this.selectedAction = action;
+
+      if ('add' === action) {
+        this.challenge = new Challenge();
+        this.challenge.event = new Event();
+      }
+
+      if (challenge) {
+        this.challenge = challenge;
+      } else {
+        this.process_challenge(action);
+      }
+    } else {
+      this.challenge = null;
+    }
+
+  }
+
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => {
       subscription.unsubscribe();
     })
+  }
+
+  private process_challenge(action: string): void {
+
+    switch (action) {
+      case 'add_confirm': {
+        this.add_challenge();
+        break;
+      }
+      case 'update_confirm': {
+        this.update_challenge();
+        break;
+      }
+      case 'delete_confirm': {
+        this.delete_challenge();
+        break;
+      }
+    }
+
+  }
+
+  private add_challenge(): void {
+    this.challengeService.addChallenge(this.challenge).subscribe();
+  }
+
+  private update_challenge(): void {
+    this.challengeService.updateChallenge(this.challenge).subscribe();
+  }
+
+  private delete_challenge(): void {
+    this.challengeService.deleteChallenge(this.challenge).subscribe();
   }
 
 }
