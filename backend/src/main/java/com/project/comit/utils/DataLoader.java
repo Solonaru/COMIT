@@ -197,35 +197,27 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		List<Resource> resources = this.resourceService.findAll();
 
 		Challenge challenge1 = new Challenge("Addition",
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
-						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
-						+ "voluptatibus!",
+				"Create a function in a language of your choice which takes as a parameter two variables and returns their sum.",
 				this.getRnFromList(skillLevels));
 		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		challenge1.setResources(this.getRnFromList(resources), this.getRnFromList(resources),
 				this.getRnFromList(resources));
 		challenge1.setTips("Add the two numbers", "Use plus sign");
 		Challenge challenge2 = new Challenge("Substraction",
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
-						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
-						+ "voluptatibus!",
+				"Create a function that takes two parameters and returns the value of the first minus the value of the second parameter.",
 				this.getRnFromList(skillLevels));
 		challenge2.setTechnologies(this.getRnFromList(technologies));
 		challenge2.setResources(this.getRnFromList(resources), this.getRnFromList(resources));
 		challenge2.setTips("Substract the two numbers", "Use minus sign");
 		Challenge challenge3 = new Challenge("Multiply",
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
-						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
-						+ "voluptatibus!",
+				"Create a function that takes two parameters and multiplies them. As a challenge you can create a function that takes multiple parameters and multiplies all of them.",
 				this.getRnFromList(skillLevels));
 		challenge3.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		challenge3.setResources(this.getRnFromList(resources), this.getRnFromList(resources),
 				this.getRnFromList(resources));
 		challenge3.setTips("Multiply the two numbers", "Use multiplication sign");
 		Challenge challenge4 = new Challenge("Divide",
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
-						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
-						+ "voluptatibus!",
+				"Create a function that takes two parameters and divides them.",
 				this.getRnFromList(skillLevels));
 		challenge4.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies));
@@ -233,53 +225,41 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 				this.getRnFromList(resources));
 		challenge4.setTips("Divide the two numbers", "Use division sign");
 		Challenge challenge5 = new Challenge("Simple calculator",
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
-						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
-						+ "voluptatibus!",
+				"Design a simple calculator which performs the four basic operations, as addition, substraction, multiplication and division.",
 				this.getRnFromList(skillLevels));
 		challenge5.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies), this.getRnFromList(technologies));
 		challenge5.setResources(this.getRnFromList(resources));
 		challenge5.setTips("Implement simple calculator with +, -, * and / operations");
 		Challenge challenge6 = new Challenge("Complex calculator",
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
-						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
-						+ "voluptatibus!",
+				"Design a complex calculator, which besides the addition, substraction, multiplication and division, has complex mathematical operations.",
 				this.getRnFromList(skillLevels));
 		challenge6.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		challenge6.setResources(this.getRnFromList(resources), this.getRnFromList(resources),
 				this.getRnFromList(resources));
 		challenge6.setTips("Design complex calculator", "Allow user to perform factorial", "Allow user to insert fractions");
 		Challenge challenge7 = new Challenge("Simply code",
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
-						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
-						+ "voluptatibus!",
+				"Design a complex calculator, which besides the addition, substraction, multiplication and division, has complex mathematical operations.",
 				this.getRnFromList(skillLevels));
 		challenge7.setTechnologies(this.getRnFromList(technologies));
 		challenge7.setResources(this.getRnFromList(resources), this.getRnFromList(resources));
 		challenge7.setTips("Code factorial function", "Code simple calculator");
 
 		Event event1 = new Event("Programming Marathon",
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
-						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
-						+ "voluptatibus!",
+				"Competitive programming is a mind sport usually held over the Internet or a local network, involving participants trying to program according to provided specifications. Contestants are referred to as sport programmers.",
 				toDate("10-01-2020"), toDate("20-02-2020"), this.getRnFromList(eventTypes));
 		event1.setTags("Programming", "Begginer", "Math");
 		event1.addChallenge(challenge1);
 		event1.addChallenge(challenge2);
 		Event event2 = new Event("Programmers Week",
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
-						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
-						+ "voluptatibus!",
+				"This year, Programmers' Week will highlight the intersection of business and technology. Activities will include 4 days of technology discussions, the 256 Conference that brings together top national and international speakers,",
 				toDate("15-10-2019"), toDate("15-12-2019"), this.getRnFromList(eventTypes));
 		event2.setTags("Programming", "Intermediate", "Code");
 		event2.addChallenge(challenge3);
 		event2.addChallenge(challenge4);
 		event2.addChallenge(challenge5);
 		Event event3 = new Event("Just Code It",
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
-						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
-						+ "voluptatibus!",
+				"EU Code Week is a grassroots initiative which aims to bring coding and digital literacy ... Just pick a topic and a target audience and add your activity to the map.",
 				toDate("15-10-2019"), toDate("25-11-2019"), this.getRnFromList(eventTypes));
 		event3.setTags("Programming", "Java", "Algorithms");
 		event3.addChallenge(challenge6);
