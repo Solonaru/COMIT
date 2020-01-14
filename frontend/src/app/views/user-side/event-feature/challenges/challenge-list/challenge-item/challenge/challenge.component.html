@@ -21,17 +21,9 @@
                 </div>
                 <div class="tips__content">
                     <h2 class="tips__title">Tips and Tricks</h2>
-                    <div class="tip">
-                        <span class="tip__number">1</span>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, neque! Dolorum provide.
-                    </div>
-                    <div class="tip">
-                        <span class="tip__number">2</span>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, neque! Dolorum provide.
-                    </div>
-                    <div class="tip">
-                        <span class="tip__number">3</span>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, neque! Dolorum provide.
+                    <div class="tip" *ngFor="let tip of challenge.tips; let i = index">
+                        <span class="tip__number">{{ i + 1 }}</span>
+                        - {{ tip }}
                     </div>
                 </div>
             </div>

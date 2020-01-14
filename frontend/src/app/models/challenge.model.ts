@@ -8,6 +8,7 @@ export class Challenge {
     title: string;
     content: string;
     restrictions: string[];
+    tips: string[];
     technologies: EnumObject[];
     skillLevel: EnumObject;
     event: Event;

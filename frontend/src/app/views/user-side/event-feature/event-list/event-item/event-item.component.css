@@ -40,6 +40,10 @@
     margin-right: 15px;
 }
 
+.event_active {
+    font-weight: bold;
+}
+
 /* Responsive */
 @media (max-width: 767.98px) {
     .event {

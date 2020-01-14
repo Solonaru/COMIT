@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -39,6 +40,8 @@ public class Challenge {
 	private String content;
 	@ElementCollection
 	private List<String> restrictions;
+	@ElementCollection
+	private List<String> tips;
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "challenge_technology", joinColumns = @JoinColumn(name = "challenge_id"), inverseJoinColumns = @JoinColumn(name = "tehchnology_id"))
 	private Set<Technology> technologies;
@@ -61,6 +64,7 @@ public class Challenge {
 	public Challenge() {
 		super();
 		this.restrictions = new ArrayList<String>();
+		this.tips = new ArrayList<String>();
 		this.technologies = new HashSet<Technology>();
 		this.solutions = new ArrayList<Solution>();
 		this.tags = new HashSet<String>();
@@ -71,10 +75,12 @@ public class Challenge {
 		this.title = title;
 		this.content = content;
 		this.restrictions = new ArrayList<String>();
+		this.tips = new ArrayList<String>();
 		this.technologies = new HashSet<Technology>();
-		this.skillLevel = skillLevel;
 		this.solutions = new ArrayList<Solution>();
 		this.tags = new HashSet<String>();
+
+		this.setSkillLevel(skillLevel);
 	}
 
 	/* ----- GETTERS & SETTERS ----- */
@@ -106,11 +112,20 @@ public class Challenge {
 		this.restrictions = restrictions;
 	}
 
+	public List<String> getTips() {
+		return tips;
+	}
+
+	public void setTips(String... tips) {
+		this.tips = Arrays.asList(tips);
+	}
+
 	public Set<Technology> getTechnologies() {
 		return technologies;
 	}
 
 	public void setTechnologies(Technology... technologies) {
+		this.addTags(Stream.of(technologies).map(Technology::getName).toArray(String[]::new));
 		this.technologies = new HashSet<Technology>(Arrays.asList(technologies));
 	}
 
@@ -119,6 +134,7 @@ public class Challenge {
 	}
 
 	public void setSkillLevel(SkillLevel skillLevel) {
+		this.addTags(skillLevel.getName());
 		this.skillLevel = skillLevel;
 	}
 
@@ -152,6 +168,13 @@ public class Challenge {
 
 	public void setTags(String... tags) {
 		this.tags = new HashSet<String>(Arrays.asList(tags));
+	}
+
+	/* ----- GETTERS & SETTERS ----- */
+	public void addTags(String... tags) {
+		for (int i = 0; i < tags.length; i++) {
+			this.tags.add(tags[i]);
+		}
 	}
 
 }

@@ -4,7 +4,11 @@
         {{ event.description }}
     </div>
     <div class="event__tags">
+        <i class="fa fa-calendar event__icon" aria-hidden="true"></i>
+        <a [ngClass]="{'event_active': isEventActive()}">From {{ event.startDate }} to {{ event.endDate }}</a>
+    </div>
+    <div class="event__tags">
         <i class="fa fa-tags event__icon" aria-hidden="true"></i>
-        <a href="#" class="event__tag" *ngFor="let tag of event.tags">{{ tag }}</a>
+        <a class="event__tag" *ngFor="let tag of event.tags">{{ tag }}</a>
     </div>
 </div>

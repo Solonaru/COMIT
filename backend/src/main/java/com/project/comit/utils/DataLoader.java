@@ -121,7 +121,6 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 				"$2a$12$r8zH66p/IXowTF9ijteW8e0ETJCn.QaAAruTunXFwMyVR2TTVwivu");
 		usr3.addRole(userRole);
 
-		/* TODO: Replace workaround with proper solution */
 		Login usr4 = new Login("Anastasia", "Solonaru", "Anastasia", "anastasia.solonaru@gmail.com",
 				"$2a$12$MglDew76JD1lpkyKspdk9e63LgseAE20tbez.qbmpKM0a8Jx6qPmy", "Admin");
 		usr4.addRole(userRole);
@@ -173,26 +172,22 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 	private void createAndPersistResources() {
 		Resource resource1 = new Resource("MDN", "developer.mozilla.org", "https://developer.mozilla.org/en-US/",
-				"Lorem ipsum dolor sit amet,"
-						+ " consectetur adipisicing elit. Nisi, ipsum ad laudantium, earum est at corporis fugit mollitia"
-						+ " quo minima quasi fuga quia cupiditate repudiandae doloribus perspiciatis illum officiis. Animi?");
-		Resource resource2 = new Resource("W3Schools", "w3schools.com", "https://www.w3schools.com/",
-				"Lorem ipsum dolor sit amet,"
-						+ " consectetur adipisicing elit. Nisi, ipsum ad laudantium, earum est at corporis fugit mollitia"
-						+ " quo minima quasi fuga quia cupiditate repudiandae doloribus perspiciatis illum officiis. Animi?");
+				"MDN Web Docs, previously Mozilla Developer Network and formerly Mozilla Developer Center, is the official Mozilla website for development documentation of web standards and Mozilla projects.");
+		Resource resource2 = new Resource("FreeCodeCamp", "freecodecamp.org", "https://www.freecodecamp.org/",
+				"Learn to code with free online courses, programming projects, and interview preparation for developer jobs.");
 		Resource resource3 = new Resource("TutorialsPoint", "tutorialspoint.com",
 				"https://www.tutorialspoint.com/index.htm",
-				"Lorem ipsum dolor sit amet,"
-						+ " consectetur adipisicing elit. Nisi, ipsum ad laudantium, earum est at corporis fugit mollitia"
-						+ " quo minima quasi fuga quia cupiditate repudiandae doloribus perspiciatis illum officiis. Animi?");
-		Resource resource4 = new Resource("EggHead", "egghead.io", "https://egghead.io/", "Lorem ipsum dolor sit amet,"
-				+ " consectetur adipisicing elit. Nisi, ipsum ad laudantium, earum est at corporis fugit mollitia"
-				+ " quo minima quasi fuga quia cupiditate repudiandae doloribus perspiciatis illum officiis. Animi?");
+				"Tutorialspoint.com is a dedicated website to provide quality online education in the domains of Computer Science, Information Technology, Programming Languages, and other Engineering as well as Management subjects.");
+		Resource resource4 = new Resource("EggHead", "egghead.io", "https://egghead.io/",
+				"EggHead is a group of working web development professionals and open source contributors that provide you with concise, information dense video courses on the best tools in the industry.");
+		Resource resource5 = new Resource("DevDocs", "devdocs.io", "https://devdocs.io/",
+				"Fast, offline, and free documentation browser for developers. Search 100+ docs in one web app.");
 
 		this.resourceService.insert(resource1);
 		this.resourceService.insert(resource2);
 		this.resourceService.insert(resource3);
 		this.resourceService.insert(resource4);
+		this.resourceService.insert(resource5);
 	}
 
 	private void createAndPersistEventsAndChallenges() {
@@ -206,69 +201,69 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
 				this.getRnFromList(skillLevels));
-		challenge1.setTags("Programming", "Addition", "Math", "Algebra");
 		challenge1.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		challenge1.setResources(this.getRnFromList(resources), this.getRnFromList(resources),
 				this.getRnFromList(resources));
+		challenge1.setTips("Add the two numbers", "Use plus sign");
 		Challenge challenge2 = new Challenge("Substraction",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
 				this.getRnFromList(skillLevels));
-		challenge2.setTags("Substraction", "Math");
 		challenge2.setTechnologies(this.getRnFromList(technologies));
 		challenge2.setResources(this.getRnFromList(resources), this.getRnFromList(resources));
+		challenge2.setTips("Substract the two numbers", "Use minus sign");
 		Challenge challenge3 = new Challenge("Multiply",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
 				this.getRnFromList(skillLevels));
-		challenge3.setTags("Programming", "Multiply", "Math", "Algebra");
 		challenge3.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		challenge3.setResources(this.getRnFromList(resources), this.getRnFromList(resources),
 				this.getRnFromList(resources));
+		challenge3.setTips("Multiply the two numbers", "Use multiplication sign");
 		Challenge challenge4 = new Challenge("Divide",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
 				this.getRnFromList(skillLevels));
-		challenge4.setTags("Programming", "Divide", "Math");
 		challenge4.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies));
 		challenge4.setResources(this.getRnFromList(resources), this.getRnFromList(resources),
 				this.getRnFromList(resources));
+		challenge4.setTips("Divide the two numbers", "Use division sign");
 		Challenge challenge5 = new Challenge("Simple calculator",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
 				this.getRnFromList(skillLevels));
-		challenge5.setTags("Programming", "Addition", "Substraction", "Code", "Math", "Algebra");
 		challenge5.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies),
 				this.getRnFromList(technologies), this.getRnFromList(technologies));
 		challenge5.setResources(this.getRnFromList(resources));
+		challenge5.setTips("Implement simple calculator with +, -, * and / operations");
 		Challenge challenge6 = new Challenge("Complex calculator",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
 				this.getRnFromList(skillLevels));
-		challenge6.setTags("Math", "Algebra");
 		challenge6.setTechnologies(this.getRnFromList(technologies), this.getRnFromList(technologies));
 		challenge6.setResources(this.getRnFromList(resources), this.getRnFromList(resources),
 				this.getRnFromList(resources));
+		challenge6.setTips("Design complex calculator", "Allow user to perform factorial", "Allow user to insert fractions");
 		Challenge challenge7 = new Challenge("Simply code",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
 				this.getRnFromList(skillLevels));
-		challenge7.setTags("Programming", "Code");
 		challenge7.setTechnologies(this.getRnFromList(technologies));
 		challenge7.setResources(this.getRnFromList(resources), this.getRnFromList(resources));
+		challenge7.setTips("Code factorial function", "Code simple calculator");
 
 		Event event1 = new Event("Programming Marathon",
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
-				toDate("01-10-2019"), toDate("01-11-2019"), this.getRnFromList(eventTypes));
+				toDate("10-01-2020"), toDate("20-02-2020"), this.getRnFromList(eventTypes));
 		event1.setTags("Programming", "Begginer", "Math");
 		event1.addChallenge(challenge1);
 		event1.addChallenge(challenge2);
@@ -276,7 +271,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
-				toDate("15-10-2019"), toDate("01-11-2019"), this.getRnFromList(eventTypes));
+				toDate("15-10-2019"), toDate("15-12-2019"), this.getRnFromList(eventTypes));
 		event2.setTags("Programming", "Intermediate", "Code");
 		event2.addChallenge(challenge3);
 		event2.addChallenge(challenge4);
@@ -292,7 +287,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam deserunt cumque delectus suscipit "
 						+ "natus repellendus a mollitia. Quia sed dolorem dolorum. Ratione, magnam ut eius fugiat voluptate sed "
 						+ "voluptatibus!",
-				toDate("01-10-2019"), toDate("01-12-2019"), this.getRnFromList(eventTypes));
+				toDate("01-01-2020"), toDate("01-04-2020"), this.getRnFromList(eventTypes));
 		event4.setTags("Programming", "Begginer", "Math");
 		event4.addChallenge(challenge7);
 

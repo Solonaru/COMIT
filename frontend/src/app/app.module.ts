@@ -31,11 +31,9 @@ import { UserComponent } from './components/roles/user/user.component';
 import { PmComponent } from './components/roles/pm/pm.component';
 import { AdminComponent } from './components/roles/admin/admin.component';
 import { DashboardComponent } from './views/admin-side/dashboard/dashboard.component';
-import { AccountManagerComponent } from './views/admin-side/account-manager/account-manager.component';
 import { GeneralManagerComponent } from './views/admin-side/general-manager/general-manager.component';
 import { EventManagerComponent } from './views/admin-side/general-manager/event-manager/event-manager.component';
 import { ChallengeManagerComponent } from './views/admin-side/general-manager/challenge-manager/challenge-manager.component';
-import { SolutionManagerComponent } from './views/admin-side/general-manager/solution-manager/solution-manager.component';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { EventListComponent } from './views/user-side/event-feature/event-list/event-list.component';
@@ -71,7 +69,6 @@ import { ChallengeItemComponent } from './views/user-side/event-feature/challeng
     PmComponent,
     AdminComponent,
     DashboardComponent,
-    AccountManagerComponent,
     EventManagerComponent,
     FooterComponent,
     EventListComponent,
@@ -81,8 +78,7 @@ import { ChallengeItemComponent } from './views/user-side/event-feature/challeng
     ChallengeListComponent,
     ChallengeItemComponent,
     GeneralManagerComponent,
-    ChallengeManagerComponent,
-    SolutionManagerComponent
+    ChallengeManagerComponent
   ],
   imports: [
     BrowserModule,

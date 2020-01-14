@@ -15,6 +15,10 @@ export class EventItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  isEventActive() {
+    return new Date(this.event.endDate) > new Date();
+  }
+
   goToPage() {
     this.router.navigate(['/challenges', this.event.id]);
   }
